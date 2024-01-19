@@ -1,18 +1,31 @@
+const {nextui} = require("@nextui-org/react");
+
 /** @type {import('tailwindcss').Config} */
-module.exports = {
-  content: [
-    './pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './components/**/*.{js,ts,jsx,tsx,mdx}',
-    './app/**/*.{js,ts,jsx,tsx,mdx}',
-  ],
-  theme: {
-    extend: {
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-      },
+
+export const content = [
+  "./app/**/*.{js,ts,jsx,tsx,mdx}",
+  "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+  "./components/**/*.{js,ts,jsx,tsx,mdx}",
+  "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
+
+  // Or if using `src` directory:
+  "./src/**/*.{js,ts,jsx,tsx,mdx}",
+];
+export const theme = {
+  extend: {
+    fontSize: {
+      '20px': '20px', // Add your custom size here
+    },
+    colors: {
+      'primary': '#D8152F'
+    },
+    backgroundImage: {
+      "hero-pattern": "url('/img/bg1.jpeg')",
+      "hero-pattern2": "url('/img/bg2.jpeg')",
+      "hero-pattern3": "url('/img/bg3.jpeg')",
+
     },
   },
-  plugins: [],
-}
+};
+export const darkMode = "class";
+export const plugins = [nextui()];

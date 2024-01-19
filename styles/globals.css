@@ -1,0 +1,132 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  background-color: black;
+
+  --c-black: #000;
+  --c-yellow: #fdf147;
+}
+
+.text-title {
+  @apply text-2xl md:text-3xl lg:text-5xl font-bold;
+}
+
+.text-h2 {
+  @apply text-xl md:text-2xl lg:text-4xl font-bold;
+}
+
+.text-h3 {
+  @apply text-3xl font-medium
+}
+::selection {
+  background-color: var(--c-yellow);
+  color: var(--c-black);
+}
+
+.div-style {
+  @apply lg:rounded-[1px] lg:mt-2 lg:py-2;
+
+}
+
+.underline-animation-white2 {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out;
+}
+
+.underline-animation-white2::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 1.25px;
+  background-color: #fff;
+  bottom: 0;
+  left: 0;
+  transform: scaleX(0);
+  transform-origin: bottom left;
+  transition: transform 0.3s ease-in-out;
+}
+
+.group:hover .underline-animation-white2::after,
+.underline-animation-white2:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+.underline-animation-white {
+  position: relative;
+  overflow: hidden; /* Ensure the overflow is hidden to hide the initially right-to-left animation */
+
+  transition: transform 0.3s ease-in-out;
+}
+
+.underline-animation-white::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 1.25px;
+  background-color: #fff; /* Change this to your desired underline color */
+  bottom: 0;
+  left: 0;
+  transform: scaleX(0);
+  transform-origin: bottom left; /* Set the initial transform-origin to bottom right */
+  transition: transform 0.3s ease-in-out;
+}
+
+.underline-animation-white:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left; /* Change this to bottom left for the hover state */
+}
+
+.underline-animation2 {
+  position: relative;
+  overflow: hidden; /* Ensure the overflow is hidden to hide the initially right-to-left animation */
+
+  transition: transform 0.3s ease-in-out;
+}
+
+.underline-animation2::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 1.25px;
+  background-color: #000; /* Change this to your desired underline color */
+  bottom: 0;
+  left: 0;
+  transform: scaleX(0);
+  transform-origin: bottom left; /* Set the initial transform-origin to bottom right */
+  transition: transform 0.3s ease-in-out;
+}
+
+.underline-animation2:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left; /* Change this to bottom left for the hover state */
+}
+
+.underline-animation {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out;
+}
+
+.underline-animation::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 1.25px;
+  background-color: #fff; /* Set the default color for non-hover state */
+  bottom: 0;
+  left: 0;
+  transform: scaleX(0);
+  transform-origin: bottom left;
+  transition: transform 0.3s ease-in-out;
+}
+
+.group:hover .underline-animation::after,
+.underline-animation:hover::after {
+  background-color: #000; /* Change this to your desired color for the hover state */
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
