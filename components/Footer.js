@@ -2,7 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { FaPhoneAlt, FaInstagram, FaLinkedinIn } from 'react-icons/fa';
+import { FaPhoneAlt, FaInstagram, FaLinkedinIn, FaGithub } from 'react-icons/fa';
 import { MdEmail } from "react-icons/md";
 import { FaFacebookF, FaXTwitter } from "react-icons/fa6";
 
@@ -38,7 +38,7 @@ const Footer = () => {
                     {/* Social Buttons (Right) */}
                     <div className='flex flex-row gap-4 mt-4 lg:mt-0 mb-8 lg:mb-0'>
                     <Link className='hover:opacity-70 transition-all duration-300' href=''alt=''>
-                        <MdEmail color="white" size={23} />
+                        <FaGithub color="white" size={23} />
                     </Link>
                     <Link className='hover:opacity-70 transition-all duration-300' href=''alt=''>
                         <FaPhoneAlt color="white" size={23} />
