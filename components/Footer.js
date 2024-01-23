@@ -11,8 +11,8 @@ const Footer = () => {
     const year = date.getFullYear();
   
     return (
-      <div className='w-[100vw] flex flex-col lg:flex-row h-[125px]'>
-            <div className='flex items-center w-full flex-col gap-4 lg:flex-row justify-between px-[5vw]'>
+      <div className='w-[100vw] bg-black mt-2 flex flex-col lg:flex-row '>
+            <div className='flex items-center w-full flex-col gap-4 lg:flex-row justify-between px-[5vw] mt-8 mb-8'>
                     {/* Logo Holder (Left) */}
                     <div>
                         <Link href='/' alt='/'>
@@ -37,24 +37,23 @@ const Footer = () => {
             
                     {/* Social Buttons (Right) */}
                     <div className='flex flex-row gap-4 mt-4 lg:mt-0 mb-8 lg:mb-0'>
-                    <Link className='hover:opacity-70 transition-all duration-300' href=''alt=''>
-                        <FaGithub color="white" size={23} />
-                    </Link>
-                    <Link className='hover:opacity-70 transition-all duration-300' href=''alt=''>
-                        <FaPhoneAlt color="white" size={23} />
-                    </Link>
-                    <Link className='hover:opacity-70 transition-all duration-300' href=''alt=''>
-                        <FaLinkedinIn color="white" size={23} />
-                    </Link>
-                    <Link className='hover:opacity-70 transition-all duration-300' href=''alt=''>
-                        <FaInstagram color="white" size={23} />
-                    </Link>
-                    <Link className='hover:opacity-70 transition-all duration-300' href=''alt=''>
-                        <FaFacebookF color="white" size={23} />
-                    </Link>
-                    <Link className='hover:opacity-70 transition-all duration-300' href=''alt=''>
-                        <FaXTwitter color="white" size={23} />
-                    </Link>
+                        <Link target='_blank' className='hover:opacity-70 transition-all duration-300' href='https://github.com/MatthewDegtyar/'alt='github'>
+                            <FaGithub color="white" size={23} />
+                        </Link>
+                        <Link target='_blank' className='hover:opacity-70 transition-all duration-300' href='https://www.linkedin.com/in/matthew-degtyar-a217261b3/'alt='linkedin'>
+                            <FaLinkedinIn color="white" size={23} />
+                        </Link>
+                        <Link target='_blank' className='hover:opacity-70 transition-all duration-300' href='https://www.facebook.com/profile.php?id=100084100467577'alt='facebook'>
+                            <FaFacebookF color="white" size={23} />
+                        </Link>
+                        {/**
+                        <Link target='_blank' className='hover:opacity-70 transition-all duration-300' href=''alt=''>
+                            <FaInstagram color="white" size={23} />
+                        </Link>
+                        <Link target='_blank' className='hover:opacity-70 transition-all duration-300' href=''alt=''>
+                            <FaXTwitter color="white" size={23} />
+                        </Link>
+                        */}
 
                     </div>
             </div>

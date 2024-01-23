@@ -43,21 +43,17 @@ const EmbedVideo = (props) => {
 const Home = () => {
   return (
     <RootLayout pageTitle='Home'>
-        <div className='flex flex-row bg-black'>
+        <div className='flex flex-col lg:flex-row bg-black'>
 
-            <div className='w-[50vw] h-[80vh] overflow-hidden rounded-[1px] flex flex-col'>
-                <div className='w-[50vw] bg--800 h-[40vh]'>
-                <EmbedVideo src='/video/hero.mp4' className="h-[80vh] z-0 object-cover w-fit" />
-
-                </div>
-                <div className='w-[50vw] bg--800 h-[40vh]'>
-
+            <div className='lg:w-[50vw] h-[50vh] md:h-auto lg:h-[80vh] overflow-hidden rounded-[1px] flex flex-col'>
+                <div className='lg:w-[50vw]  lg:h-[40vh]'>
+                <EmbedVideo src='/video/hero.mp4' className="lg:h-[80vh] md:h-auto w-full h-[50vh] z-0 object-cover w-fit" />
                 </div>
             </div>
-            <div className='text-black w-[50vw] h-[80vh] bg- flex flex-col itmes-center  justify-center place-items-center'>
-                <div className='w-96 flex flex-col p-8 bg-black/50 rounded-[1px] gap-2'>
-                    <h1 className='text-title text-white'>Make An Impact</h1>
-                    <h2 className='text-white'>We’re a creative digital agency strengthening causes, growing businesses, and empowering organizations online.</h2>
+            <div className='text-black lg:w-[50vw] lg:h-[80vh] bg- flex flex-col lg:items-center items-start lg:justify-center place-items-center'>
+                <div className='w-96 flex flex-col p-4 md:p-8 rounded-[1px] gap-2'>
+                    <h1 className='text-title text-white uppercase text-nowrap'>Create Value</h1>
+                    <h2 className='text-white mt-4 lg:mt-8'>We’re a creative digital agency creating meaningful digital presence and empowering businesses.</h2>
                 </div>
             </div>
         </div>

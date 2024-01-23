@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link.js';
+
 import { IoMdClose } from "react-icons/io";
 import { FiMenu } from "react-icons/fi";
+import { FaPhoneAlt, FaInstagram, FaLinkedinIn, FaGithub } from 'react-icons/fa';
+import { FaFacebookF, FaXTwitter } from "react-icons/fa6";
+import { RxCaretDown, RxCaretRight } from "react-icons/rx";
 
 import MenuComponent from './MenuComponent.js';
 import { menuNav } from '../constants/index.js';
-import { RxCaretDown } from "react-icons/rx";
 
 function Navbar () {
   const [menuShown, setMenuShown] = useState(false);
@@ -16,6 +19,16 @@ function Navbar () {
   const [blurBackground, setBlurBackground] = useState(false);
 
   const blurClass = blurBackground ? 'blur-background' : '';
+
+  useEffect(() => {
+    // Toggle overflow property on the body based on showMenu
+    document.body.style.overflow = menuShown ? 'hidden' : 'auto';
+
+    // Clean up the style when the component is unmounted
+    return () => {
+        document.body.style.overflow = 'auto';
+    };
+}, [menuShown]);
 
   const handleFeatured = () => {
     setDropShown(false)
@@ -48,7 +61,7 @@ function Navbar () {
   
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 500) {
+      if (window.scrollY > 100) {
         handleCloseAll();
       }
     };
@@ -71,11 +84,31 @@ function Navbar () {
     </Link>
     <div className='lg:shown ml-12 hidden text-sub items-center text-white gap-8 lg:flex flex-row'>
       <ul onClick={()=>handleCloseAll()} className='underline-animation-white'><Link href='/' >Home</Link></ul>
-      <ul className='cursor-pointer underline-animation-white flex flex-row gap-2 items-center' onClick={() => handleDrop()}>Services<RxCaretDown size={30} className={`${dropShown ? 'rotate-180' : ''} transition-all duration-300`} /></ul>
-      <ul className='cursor-pointer underline-animation-white flex flex-row gap-2 items-center' onClick={() => handleFeatured()}>Featured Projects<RxCaretDown size={30} className={`${featuredShown ? 'rotate-180' : ''} transition-all duration-300`} /></ul>
+      <div className='cursor-pointer  flex flex-row gap-2 items-center' onClick={() => handleDrop()}><ul className='underline-animation-white'>Services</ul><RxCaretDown size={30} className={`${dropShown ? 'rotate-180' : ''} transition-all duration-300`} /></div>
+      <div className='cursor-pointer flex flex-row gap-2 items-center' onClick={() => handleFeatured()}><ul className='underline-animation-white'>Featured Projects</ul><RxCaretDown size={30} className={`${featuredShown ? 'rotate-180' : ''} transition-all duration-300`} /></div>
       <ul onClick={()=>handleCloseAll()} className='underline-animation-white'><Link href='/contact'>Contact</Link></ul>
 
     </div>
+    <div className='lg:shown ml-12 hidden text-sub items-center text-white gap-4 lg:flex flex-row'>
+        <Link target='_blank' className='hover:opacity-70 transition-all duration-300' href='https://github.com/MatthewDegtyar/'alt='github'>
+            <FaGithub color="white" size={23} />
+        </Link>
+        <Link target='_blank' className='hover:opacity-70 transition-all duration-300' href='https://www.linkedin.com/in/matthew-degtyar-a217261b3/'alt='linkedin'>
+            <FaLinkedinIn color="white" size={23} />
+        </Link>
+        <Link target='_blank' className='hover:opacity-70 transition-all duration-300' href='https://www.facebook.com/profile.php?id=100084100467577'alt='facebook'>
+            <FaFacebookF color="white" size={23} />
+        </Link>
+        {/**
+        <Link target='_blank' className='hover:opacity-70 transition-all duration-300' href=''alt=''>
+            <FaInstagram color="white" size={23} />
+        </Link>
+        <Link target='_blank' className='hover:opacity-70 transition-all duration-300' href=''alt=''>
+            <FaXTwitter color="white" size={23} />
+        </Link>
+         */}
+    </div>
+   
 
     <div onClick={handleMenu} className='resize-none lg:hidden shown flex h-[45px] sm:absolute right-[5vw] w-[45px]'>
         <IoMdClose className={menuShown ? '' : 'hidden'} color='white' size={45}/>
@@ -88,251 +121,152 @@ function Navbar () {
       </div>
     </div>
 
-  <div onClick={() => handleCloseAll()} className={`${dropShown | featuredShown ? 'hidden lg:shown lg:flex' : 'hidden'} w-[100vw] h-[130vw] absolute left-0 mt-[125px] top-0 backdrop-blur-[7px]`}></div>
+  <div onClick={() => handleCloseAll()} className={`${dropShown | featuredShown ? 'hidden lg:shown lg:flex' : 'hidden'} w-[100vw] h-[130vw] absolute left-0 mt-[125px] top-0 backdrop-blur-[7px] transition-all duration-300`} alt='blur'></div>
 
-  <div className={`w-[100vw] text-white mt-[125px]  xl:flex-col px-[7.5vw]  outline-white overflow-y-scroll bg-black absolute left-0 top-0 h-[500px] ${dropShown ? 'lg:shown lg:flex hidden' : 'hidden'}`}>
+  <div className={`w-[100vw] text-white mt-[125px]  xl:flex-col px-[7.5vw]  outline-white overflow-y-scroll bg-black absolute left-0 top-0 h-[400px] ${dropShown ? 'lg:shown lg:flex hidden' : 'hidden'}`}>
     <div className='mt-8 mb-16' alt='spacer'>
-      <div >
-        <div className='flex w-full flex-col gap-6'>
-                  <div className='w-full' alt='holder by car brand'>
-                  <p className='text-sub font-semibold mb-3 text-start'>Web Development</p>
-                      <div className='grid grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-8 w-full' >
-                          <div className="h-fit w-fit group overflow-hidden" alt='item'>               
-                                  <div className="relative hover:scale-125 transition-all duration-300 overflow-hidden">
-                                      <div className='flex flex-col items-center'>
-                                          <Image alt='img' width={520} height={375} className="w-full group-hover:grayscale filter-none h-[230px] object-center hover:opacity-0 transition-all duration-75 object-cover" src='/img/1.png'/>
-                                          <ul className='text-center absolute bottom-4 text-pcard transition-all duration-300 group-hover:scale-75 group-hover:opacity-0 text-white font-bold inline-block bg-transparent'>SEO</ul>
-                                      </div>
-                                  <Link onClick={()=>handleCloseAll()} href='/packages/c8-corvette-2020-plus' alt='' className="absolute bg-black/50  text-center transition-all duration-900 h-full w-full  bg- -bottom-0 flex items-center justify-center group-hover:bottom-0 opacity-0 group-hover:opacity-100">
-                                      <p className=" text-white py-2 text-sub font-bold px-5 opacity-100">See All SEO Packages</p>
-                                  </Link>
-                              </div>
-                          </div>
-                          <div className="h-fit w-fit group overflow-hidden" alt='item'>               
-                                  <div className="relative hover:scale-125 transition-all duration-300 overflow-hidden">
-                                      <div className='flex flex-col items-center'>
-                                          <Image alt='img' width={520} height={375} className="w-full group-hover:grayscale filter-none h-[230px] object-center hover:opacity-0 transition-all duration-75 object-cover" src='/img/1.png'/>
-                                          <ul className='text-center absolute bottom-4 text-pcard transition-all duration-300 group-hover:scale-75 group-hover:opacity-0 text-white font-bold inline-block bg-transparent'>SEO</ul>
-                                      </div>
-                                  <Link onClick={()=>handleCloseAll()} href='/packages/c8-corvette-2020-plus' alt='' className="absolute bg-black/50  text-center transition-all duration-900 h-full w-full  bg- -bottom-0 flex items-center justify-center group-hover:bottom-0 opacity-0 group-hover:opacity-100">
-                                      <p className=" text-white py-2 text-sub font-bold px-5 opacity-100">See All SEO Packages</p>
-                                  </Link>
-                              </div>
-                          </div>
-                          <div className="h-fit w-fit group overflow-hidden" alt='item'>               
-                                  <div className="relative hover:scale-125 transition-all duration-300 overflow-hidden">
-                                      <div className='flex flex-col items-center'>
-                                          <Image alt='img' width={520} height={375} className="w-full group-hover:grayscale filter-none h-[230px] object-center hover:opacity-0 transition-all duration-75 object-cover" src='/img/1.png'/>
-                                          <ul className='text-center absolute bottom-4 text-pcard transition-all duration-300 group-hover:scale-75 group-hover:opacity-0 text-white font-bold inline-block bg-transparent'>SEO</ul>
-                                      </div>
-                                  <Link onClick={()=>handleCloseAll()} href='/packages/c8-corvette-2020-plus' alt='' className="absolute bg-black/50  text-center transition-all duration-900 h-full w-full  bg- -bottom-0 flex items-center justify-center group-hover:bottom-0 opacity-0 group-hover:opacity-100">
-                                      <p className=" text-white py-2 text-sub font-bold px-5 opacity-100">See All SEO Packages</p>
-                                  </Link>
-                              </div>
-                          </div>
-                          <div className="h-fit w-fit group overflow-hidden" alt='item'>               
-                                  <div className="relative hover:scale-125 transition-all duration-300 overflow-hidden">
-                                      <div className='flex flex-col items-center'>
-                                          <Image alt='img' width={520} height={375} className="w-full group-hover:grayscale filter-none h-[230px] object-center hover:opacity-0 transition-all duration-75 object-cover" src='/img/1.png'/>
-                                          <ul className='text-center absolute bottom-4 text-pcard transition-all duration-300 group-hover:scale-75 group-hover:opacity-0 text-white font-bold inline-block bg-transparent'>SEO</ul>
-                                      </div>
-                                  <Link onClick={()=>handleCloseAll()} href='/packages/c8-corvette-2020-plus' alt='' className="absolute bg-black/50  text-center transition-all duration-900 h-full w-full  bg- -bottom-0 flex items-center justify-center group-hover:bottom-0 opacity-0 group-hover:opacity-100">
-                                      <p className=" text-white py-2 text-sub font-bold px-5 opacity-100">See All SEO Packages</p>
-                                  </Link>
-                              </div>
-                          </div>
-                         
-                      </div>
+        <div className='h-[1px] w-full bg-white text-black'>.</div>
+      <div className=' flex flex-row justify-between'>
+<div className='flex flex-row gap-24'>
+        <div className='flex flex-col mt-8'>
+            <p className='text-[20px] font-semibold text-start'>Web Development</p>
+            <div className='mt-5 flex flex-col gap-4'>
+                <Link onClick={() => handleCloseAll()} href='/services/static-sites' alt='static site' className='underline-animation-white2 w-fit'>Static Sites</Link>
+                <Link onClick={() => handleCloseAll()} href='/services/wordpress-cms' alt='static site' className='underline-animation-white2 w-fit'>WordPress CMS</Link>
+                <Link onClick={() => handleCloseAll()} href='/services/e-commerce' alt='static site' className='underline-animation-white2 w-fit'>Shopify IMS (E-Commerce)</Link>
+                <Link onClick={() => handleCloseAll()} href='/services/white-label' alt='static site' className='underline-animation-white2 w-fit'>White Label</Link>
+            </div>
+        </div>
 
-                  </div>
-                  <div className='w-full' alt='holder by car brand'>
-                  <p className='text-sub font-semibold mb-3 text-start'>Marketing</p>
-                      <div className='grid grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-8 w-full' >
-                          <div className="h-fit w-fit group overflow-hidden" alt='item'>               
-                                  <div className="relative hover:scale-125 transition-all duration-300 overflow-hidden">
-                                      <div className='flex flex-col items-center'>
-                                          <Image alt='img' width={520} height={375} className="w-full group-hover:grayscale filter-none h-[230px] object-center hover:opacity-0 transition-all duration-75 object-cover" src='/img/1.png'/>
-                                          <ul className='text-center absolute bottom-4 text-pcard transition-all duration-300 group-hover:scale-75 group-hover:opacity-0 text-white font-bold inline-block bg-transparent'>SEO</ul>
-                                      </div>
-                                  <Link onClick={()=>handleCloseAll()} href='/packages/c8-corvette-2020-plus' alt='' className="absolute bg-black/50  text-center transition-all duration-900 h-full w-full  bg- -bottom-0 flex items-center justify-center group-hover:bottom-0 opacity-0 group-hover:opacity-100">
-                                      <p className=" text-white py-2 text-sub font-bold px-5 opacity-100">See All SEO Packages</p>
-                                  </Link>
-                              </div>
-                          </div>
-                          <div className="h-fit w-fit group overflow-hidden" alt='item'>               
-                                  <div className="relative hover:scale-125 transition-all duration-300 overflow-hidden">
-                                      <div className='flex flex-col items-center'>
-                                          <Image alt='img' width={520} height={375} className="w-full group-hover:grayscale filter-none h-[230px] object-center hover:opacity-0 transition-all duration-75 object-cover" src='/img/1.png'/>
-                                          <ul className='text-center absolute bottom-4 text-pcard transition-all duration-300 group-hover:scale-75 group-hover:opacity-0 text-white font-bold inline-block bg-transparent'>SEO</ul>
-                                      </div>
-                                  <Link onClick={()=>handleCloseAll()} href='/packages/c8-corvette-2020-plus' alt='' className="absolute bg-black/50  text-center transition-all duration-900 h-full w-full  bg- -bottom-0 flex items-center justify-center group-hover:bottom-0 opacity-0 group-hover:opacity-100">
-                                      <p className=" text-white py-2 text-sub font-bold px-5 opacity-100">See All SEO Packages</p>
-                                  </Link>
-                              </div>
-                          </div>
-                          <div className="h-fit w-fit group overflow-hidden" alt='item'>               
-                                  <div className="relative hover:scale-125 transition-all duration-300 overflow-hidden">
-                                      <div className='flex flex-col items-center'>
-                                          <Image alt='img' width={520} height={375} className="w-full group-hover:grayscale filter-none h-[230px] object-center hover:opacity-0 transition-all duration-75 object-cover" src='/img/1.png'/>
-                                          <ul className='text-center absolute bottom-4 text-pcard transition-all duration-300 group-hover:scale-75 group-hover:opacity-0 text-white font-bold inline-block bg-transparent'>SEO</ul>
-                                      </div>
-                                  <Link onClick={()=>handleCloseAll()} href='/packages/c8-corvette-2020-plus' alt='' className="absolute bg-black/50  text-center transition-all duration-900 h-full w-full  bg- -bottom-0 flex items-center justify-center group-hover:bottom-0 opacity-0 group-hover:opacity-100">
-                                      <p className=" text-white py-2 text-sub font-bold px-5 opacity-100">See All SEO Packages</p>
-                                  </Link>
-                              </div>
-                          </div>
-                          <div className="h-fit w-fit group overflow-hidden" alt='item'>               
-                                  <div className="relative hover:scale-125 transition-all duration-300 overflow-hidden">
-                                      <div className='flex flex-col items-center'>
-                                          <Image alt='img' width={520} height={375} className="w-full group-hover:grayscale filter-none h-[230px] object-center hover:opacity-0 transition-all duration-75 object-cover" src='/img/1.png'/>
-                                          <ul className='text-center absolute bottom-4 text-pcard transition-all duration-300 group-hover:scale-75 group-hover:opacity-0 text-white font-bold inline-block bg-transparent'>SEO</ul>
-                                      </div>
-                                  <Link onClick={()=>handleCloseAll()} href='/packages/c8-corvette-2020-plus' alt='' className="absolute bg-black/50  text-center transition-all duration-900 h-full w-full  bg- -bottom-0 flex items-center justify-center group-hover:bottom-0 opacity-0 group-hover:opacity-100">
-                                      <p className=" text-white py-2 text-sub font-bold px-5 opacity-100">See All SEO Packages</p>
-                                  </Link>
-                              </div>
-                          </div>
-                         
-                      </div>
+        <div className='flex flex-col mt-8'>
+            <p className='text-[20px] font-semibold text-start'>Digital Marketing</p>
+            <div className='mt-5 flex flex-col gap-4'>
+                <Link onClick={() => handleCloseAll()} href='/services/seo' alt='static site' className='underline-animation-white2 w-fit'>Search Engine Optimization</Link>
+                <Link onClick={() => handleCloseAll()} href='/services/social-media' alt='static site' className='underline-animation-white2 w-fit'>Social Media Management & Strategy</Link>
+                <Link onClick={() => handleCloseAll()} href='/services/google-ads' alt='static site' className='underline-animation-white2 w-fit'>Google Ads</Link>
+                {/**
+                <Link onClick={() => handleCloseAll()} href='/services/static-site' alt='static site' className='underline-animation-white2 w-fit'>Meta (Facebook) Ads</Link>
+                <Link onClick={() => handleCloseAll()} href='/services/static-site' alt='static site' className='underline-animation-white2 w-fit'>Instagram Ads</Link>
+                <Link onClick={() => handleCloseAll()} href='/services/static-site' alt='static site' className='underline-animation-white2 w-fit'>TikTok Ads</Link>
+                 */}
+            </div>
+        </div>
+{/**
+        <div className='flex flex-col mt-8'>
+            <p className='text-[20px] font-semibold text-start'>Relationship Management</p>
+            <div className='mt-5 flex flex-col gap-4'>
+                <Link onClick={() => handleCloseAll()} href='/services/static-site' alt='static site' className='underline-animation-white2 w-fit'>Review Management & Sourcing</Link>
+                <Link onClick={() => handleCloseAll()} href='/services/static-site' alt='static site' className='underline-animation-white2 w-fit'>Lead Nurturing</Link>
+                <Link onClick={() => handleCloseAll()} href='/services/static-site' alt='static site' className='underline-animation-white2 w-fit'>Customer/Client Retention Strategy</Link>
+                <Link onClick={() => handleCloseAll()} href='/services/static-site' alt='static site' className='underline-animation-white2 w-fit'>Email Strategy</Link>
+            </div>
+        </div>
+ */}
+ </div>
+        <div className='bg-[#121317] h-fit flex flex-row'>
+            <div className='ml-8 mr-8'>
+                <p className='text-[20px] mt-8 font-semibold text-start'>Beautiful Design</p>
+                <p className='text-[18px] mt-4 font-light max-w-44'>Discover how to build a better site</p>
+                <Link href='/services/wordpress-cms' className='flex flex-row gap-3 items-center mt-6 group mb-4' alt='learn more holder'>
+                    <p className='underline-animation-white2'>Learn More</p>
+                    <RxCaretRight className='group-hover:scale-125 transition-all duration-300' color='white' size={34} />
+                </Link>
+            </div>
+            <Image
+                src='/img/1.png'
+                height={200}
+                width={200}
+                alt='img'
+            />
 
-                  </div>
-                  <div className='w-full' alt='holder by car brand'>
-                  <p className='text-sub font-semibold mb-3 text-start'>Professional Services</p>
-                      <div className='grid grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-8 w-full' >
-                          <div className="h-fit w-fit group overflow-hidden" alt='item'>               
-                                  <div className="relative hover:scale-125 transition-all duration-300 overflow-hidden">
-                                      <div className='flex flex-col items-center'>
-                                          <Image alt='img' width={520} height={375} className="w-full group-hover:grayscale filter-none h-[230px] object-center hover:opacity-0 transition-all duration-75 object-cover" src='/img/1.png'/>
-                                          <ul className='text-center absolute bottom-4 text-pcard transition-all duration-300 group-hover:scale-75 group-hover:opacity-0 text-white font-bold inline-block bg-transparent'>SEO</ul>
-                                      </div>
-                                  <Link onClick={()=>handleCloseAll()} href='/packages/c8-corvette-2020-plus' alt='' className="absolute bg-black/50  text-center transition-all duration-900 h-full w-full  bg- -bottom-0 flex items-center justify-center group-hover:bottom-0 opacity-0 group-hover:opacity-100">
-                                      <p className=" text-white py-2 text-sub font-bold px-5 opacity-100">See All SEO Packages</p>
-                                  </Link>
-                              </div>
-                          </div>
-                          <div className="h-fit w-fit group overflow-hidden" alt='item'>               
-                                  <div className="relative hover:scale-125 transition-all duration-300 overflow-hidden">
-                                      <div className='flex flex-col items-center'>
-                                          <Image alt='img' width={520} height={375} className="w-full group-hover:grayscale filter-none h-[230px] object-center hover:opacity-0 transition-all duration-75 object-cover" src='/img/1.png'/>
-                                          <ul className='text-center absolute bottom-4 text-pcard transition-all duration-300 group-hover:scale-75 group-hover:opacity-0 text-white font-bold inline-block bg-transparent'>SEO</ul>
-                                      </div>
-                                  <Link onClick={()=>handleCloseAll()} href='/packages/c8-corvette-2020-plus' alt='' className="absolute bg-black/50  text-center transition-all duration-900 h-full w-full  bg- -bottom-0 flex items-center justify-center group-hover:bottom-0 opacity-0 group-hover:opacity-100">
-                                      <p className=" text-white py-2 text-sub font-bold px-5 opacity-100">See All SEO Packages</p>
-                                  </Link>
-                              </div>
-                          </div>
-                          <div className="h-fit w-fit group overflow-hidden" alt='item'>               
-                                  <div className="relative hover:scale-125 transition-all duration-300 overflow-hidden">
-                                      <div className='flex flex-col items-center'>
-                                          <Image alt='img' width={520} height={375} className="w-full group-hover:grayscale filter-none h-[230px] object-center hover:opacity-0 transition-all duration-75 object-cover" src='/img/1.png'/>
-                                          <ul className='text-center absolute bottom-4 text-pcard transition-all duration-300 group-hover:scale-75 group-hover:opacity-0 text-white font-bold inline-block bg-transparent'>SEO</ul>
-                                      </div>
-                                  <Link onClick={()=>handleCloseAll()} href='/packages/c8-corvette-2020-plus' alt='' className="absolute bg-black/50  text-center transition-all duration-900 h-full w-full  bg- -bottom-0 flex items-center justify-center group-hover:bottom-0 opacity-0 group-hover:opacity-100">
-                                      <p className=" text-white py-2 text-sub font-bold px-5 opacity-100">See All SEO Packages</p>
-                                  </Link>
-                              </div>
-                          </div>
-                          <div className="h-fit w-fit group overflow-hidden" alt='item'>               
-                                  <div className="relative hover:scale-125 transition-all duration-300 overflow-hidden">
-                                      <div className='flex flex-col items-center'>
-                                          <Image alt='img' width={520} height={375} className="w-full group-hover:grayscale filter-none h-[230px] object-center hover:opacity-0 transition-all duration-75 object-cover" src='/img/1.png'/>
-                                          <ul className='text-center absolute bottom-4 text-pcard transition-all duration-300 group-hover:scale-75 group-hover:opacity-0 text-white font-bold inline-block bg-transparent'>SEO</ul>
-                                      </div>
-                                  <Link onClick={()=>handleCloseAll()} href='/packages/c8-corvette-2020-plus' alt='' className="absolute bg-black/50  text-center transition-all duration-900 h-full w-full  bg- -bottom-0 flex items-center justify-center group-hover:bottom-0 opacity-0 group-hover:opacity-100">
-                                      <p className=" text-white py-2 text-sub font-bold px-5 opacity-100">See All SEO Packages</p>
-                                  </Link>
-                              </div>
-                          </div>
-                         
-                      </div>
+        </div>
 
-                  </div>
-              </div>
-        </div>  
+        </div >  
 
     </div>
   </div>
 
   <div className={`w-[100vw] shadow-2xl text-white mt-[125px] xl:flex-col px-[7.5vw] hidden  overflow-y-scroll bg-black absolute left-0 top-0 h-[500px] ${featuredShown ? 'lg:shown lg:flex' : 'hidden'}`}>
-    <div className='mt-8 mb-16' alt='spacer'>
+  <div className='mt-8 mb-16' alt='spacer'>
+        <div className='h-[1px] w-full bg-white text-black mb-8'>.</div>
       
     <div className='grid lg:grid-cols-4  grid-cols-2 w-full gap-4 lg:gap-8'>
 
     <div className='flex text-sub flex-col items-center' alt='item'>
         <div className='overflow-hidden '>
         <div className='mb-2'>
-                <ul className='text-center top-0'>Build 1</ul>
+                <ul className='text-center text-[20px] font-semibold top-0'>Gromm Racing</ul>
             </div>
-            <Link onClick={()=>handleCloseAll()} href='/featured/'>
+            <div>
                 <Image
-                    className='hover:sm:scale-125 hover:scale-150 transition-transform duration-300'
-                    src='/img/20.png'
+                    className='hover:sm:scale-125 w-[220px] h-[300px] rounded-[1px] object-cover hover:scale-150 transition-transform duration-300'
+                    src='/img/promo1.jpeg'
                     width={300}
                     height={720}
                     alt='car'
                 />
-            </Link>
+            </div>
         </div>
         <div className='self-center hidden lg:shown lg:flex'>
-            <p className='text-center mt-3 font-medium  underline-animation-white'><Link href='/featured/'>Learn More</Link></p>
+            <p className='text-center mt-3 font-medium  underline-animation-white'><Link target='_blank' href='https://www.grommracing.com/'>Visit Site</Link></p>
         </div>
     </div>
 
         <div className='flex text-sub flex-col items-center' alt='item'>
             <div className='overflow-hidden '>
             <div className='mb-2'>
-                    <ul className=' text-center top-0'>Build 2</ul>
+                    <ul className=' text-center text-[20px] font-semibold top-0'>Oviedo Machine Works</ul>
                 </div>
-                <Link onClick={()=>handleCloseAll()} href='/featured/'>
+                <div>
                     <Image
-                        className='hover:sm:scale-125 hover:scale-150  transition-transform duration-300'
-                        src='/img/20.png'
+                        className='hover:sm:scale-125 hover:scale-150 w-[220px] h-[300px] rounded-[1px] object-cover transition-transform duration-300'
+                        src='/img/promo2.jpeg'
                         width={300}
                         height={720}
                         alt='car'
                     />
-                </Link>
+                </div>
             </div>
             <div className='self-center hidden lg:shown lg:flex'>
-                <p className='text-center mt-3 font-medium  underline-animation-white'><Link href='/featured/'>Learn More</Link></p>
+                <p className='text-center mt-3 font-medium  underline-animation-white'><Link target='_blank' href='https://www.machineworksoviedo.com/'>Visit Site</Link></p>
             </div>
       </div>
       <div className='flex text-sub flex-col items-center' alt='item'>
           <div className='overflow-hidden '>
           <div className='mb-2'>
-                  <ul className='text-center top-0'>Build 3</ul>
+                  <ul className='text-center text-[20px] font-semibold top-0'>HCA Books (demo)</ul>
               </div>
-              <Link onClick={()=>handleCloseAll()} href='/featured/'>
+              <div>
                   <Image
-                      className='hover:sm:scale-125 hover:scale-150  transition-transform duration-300'
-                      src='/img/20.png'
+                      className='hover:sm:scale-125 hover:scale-150 w-[220px] h-[300px] object-cover transition-transform duration-300'
+                      src='/img/clean.png'
                       width={300}
                       height={720}
                       alt='car'
                   />
-              </Link>
+              </div>
           </div>
           <div className='self-center hidden lg:shown lg:flex'>
-              <p className='text-center mt-3 font-medium underline-animation-white'><Link href='/featured/'>Learn More</Link></p>
+              <p className='text-center mt-3 font-medium underline-animation-white'><Link target='_blank' href='https://main.d32t6ny9gzrv97.amplifyapp.com/'>Visit Site</Link></p>
           </div>
       </div>
       <div className='flex text-sub flex-col items-center' alt='item'>
           <div className='overflow-hidden '>
           <div className='mb-2'>
-                  <ul className='text-center top-0'>Build 4</ul>
+                  <ul className='text-center text-[20px] font-semibold top-0'>Racing Motosports (demo)</ul>
               </div>
-              <Link onClick={()=>handleCloseAll()} href='/featured/'>
+              <div>
                   <Image
-                      className='hover:sm:scale-125 hover:scale-150  transition-transform duration-300'
+                      className='hover:sm:scale-125 hover:scale-150 w-[220px] h-[300px] rounded-[1px] object-cover transition-transform duration-300'
                       src='/img/20.png'
                       width={300}
                       height={720}
                       alt='car'
                   />
-              </Link>
+              </div>
           </div>
           <div className='self-center hidden lg:shown lg:flex'>
-              <p className='text-center mt-3 font-medium underline-animation-white'><Link href='/featured/'>Learn More</Link></p>
+              <p className='text-center mt-3 font-regular underline-animation-white'><Link target='_blank' href='https://main.d3t439efu6gdup.amplifyapp.com/'>Visit Site</Link></p>
           </div>
       </div>
 

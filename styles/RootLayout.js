@@ -5,14 +5,15 @@ import Footer from '@/components/Footer'
 import ContactConverter from '@/components/ContactConverter'
 import FeaturedElement from '@/components/FeaturedElement'
 import DMElement from '@/components/DMElement'
+import Badges from '@/components/Badges'
 
-const RootLayout = ({pageTitle, imageUrl, children, hideContact, hideFeatured, hideDME}) => {
+const RootLayout = ({pageTitle, imageUrl, children, hideContact, hideFeatured, hideDME, hideBadges}) => {
   return (
     <div >
         <Head>
             <title>{`${pageTitle} - Degtyar Consulting`}</title>
             <meta name="description" content="Digital Consultants" />
-            <link rel="icon" href="/" />
+            <link rel="icon" href="/img/DClogo1024.png" />
             <link rel='canonical' href='https://www.degtyarconsulting.com/' />
             <meta property="og:type" content="website" />
             <meta property="og:url" content="https://www.degtyarconsulting.com/" />
@@ -25,7 +26,7 @@ const RootLayout = ({pageTitle, imageUrl, children, hideContact, hideFeatured, h
             <meta name="twitter:card" content="summary_large_image" />  
         </Head>
         <Navbar/>
-        <div className='mt-[125px] bg-white p-2'>
+        <div className='mt-[125px] bg-white cursor-default'>
           {children}
         
         {!hideFeatured &&
@@ -34,11 +35,13 @@ const RootLayout = ({pageTitle, imageUrl, children, hideContact, hideFeatured, h
         {!hideDME &&
           <DMElement/>
         }
+
         {!hideContact &&
           <ContactConverter/>
         }
+                <Footer/>
+
         </div>
-        <Footer/>
     </div>
   )
 }

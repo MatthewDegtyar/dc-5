@@ -1,0 +1,346 @@
+import RootLayout from '@/styles/RootLayout'
+import React from 'react'
+import { useRouter } from 'next/router';
+import {Accordion, AccordionItem, Button} from "@nextui-org/react";
+import Link from 'next/link';
+import ContactConverter from '@/components/ContactConverter';
+
+const FAQs = [
+  {
+    question: 'How much does a website cost?',
+    answer: 'There’s not one single answer to this question. A website design is quoted based on the needs of each individual project. Every website is unique and requires different components; we design and develop custom websites specifically for your business. We’ll ask a lot of questions, assess your needs, and give you a price quote based on that assessment. Our smallest package starts at $1,249. Please contact us at Degtyar.Contulting@gmail.com'
+  },
+  {
+    question: 'How long does a project take?',
+    answer: 'Our standard timeline is 3-6 weeks to complete a website but this depends on the project since the size and pace of any project is set by each client. How much input you can provide during the initial stages, your feedback, how soon the content is provided – all this affects the speed of completion. The functionality and revisions required will also play a role in your timeline.'
+  },
+  {
+    question: 'What about site maintainance?',
+    answer: 'We can help maintain your website, or you can do so yourself with the more minor changes. The choice is 100% up to you. We provide on-going support for many of our clients but it is not mandatory and you will not be charged a monthly fee. You can contact us as you require updates to your website and we will provide an hourly quote based on your requests.'
+  },
+  {
+    question: 'Do you host and provide domain names?',
+    answer: 'Yes. Hosting is $10/m and domain pricing depends on how preium of a name you want for your website.'
+  },
+  {
+    question: 'Will the website be mobile friendly?',
+    answer: 'Absolutely! Having a mobile-friendly website is more important than ever! We work hard to ensure your website is responsive on modern devices and browsers.'
+  },
+  {
+    question: 'What is photo sourcing?',
+    answer: 'If required, we will assist you in finding free stock images.'
+  },
+  {
+    question: 'How do we get started?',
+    answer: 'Contact us by email at Degtyar.Consulting@gmail.com  with your website details (current or new project), page breakdown, and any sample websites to reference. Upon review, we will provide an estimate for your project or schedule a call to discuss further.'
+  },
+  {
+    question: 'What payment methods do you accept?',
+    answer: 'Upon agreement of the quote presented, we will accept Debit, Visa, MasterCard, Amex and Cheque.'
+  },
+  {
+    question: 'Is SEO included in my website build?',
+    answer: 'No. Although images and text will be indexed by search engines. We have an SEO team that can help you out!'
+  },
+  {
+    question: 'Do you work with new businesses?',
+    answer: 'Yes! we work with all types of businesses – new, small, to big corporations. We are excited to work and guide new businesses who are passionate about taking their first steps into an online presence and making their vision come to life.'
+  },
+  {
+    question: 'Who writes the text/content for the website?',
+    answer: 'We advice that you write the content for your website, although we can ghostwrite provided we have the relevant information to do so.'
+  },
+
+
+]
+
+const Page = () => {
+  const defaultContent =
+  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
+  
+  const midIndex = Math.ceil(FAQs.length / 2); // Calculate the index to split FAQs into two columns
+
+  const firstHalfFAQs = FAQs.slice(0, midIndex);
+  const secondHalfFAQs = FAQs.slice(midIndex);
+  return (
+    <RootLayout hideContact={true} pageTitle='E-Commerce'>
+        <div className='bg-black h-[25vh] p-4 xl:p-8 bg-hero-pattern4 bg-cover bg-center bg-no-repeat'>
+            <div className='bg-black/60 rounded-[1px] flex flex-col gap-2 p-3 xl:p-6 items-center  justify-center text-white w-full h-full'>
+                <h1 className='text-title text-pretty text-center'>Ready To Empower Your Business?</h1>
+                <h2 className='text-h2'>E-Commerce</h2>
+            </div>
+        </div>
+
+        <div className='bg-black text-white px-[5vw]' alt='first'>
+          <div className='h-8' alt='spacer'></div>
+          <h3 className='text-h3 text-center'>Why Us?</h3>
+          <div className='mt-4 flex flex-col xl:flex-row gap-8 xl:gap-24 sm:px-[10vw] md:px-[15vw] lg:px-[20vw] xl:px-[0vw] cursor-default' alt='holder'>
+            <div className='w-full bg-gradient-to-tr from-blue-500 rounded-[1px] to-violet-500'>
+
+              <div className='bg-[#191919] rounded-[1px] hover:scale-[98%] transition-all duration-100 w-full h-full p-4'>
+                <p className='text-[60px] font-bold text-center'>1</p>
+                <p className='text-center text-h3'>Less Headaches</p>
+                <div className='mt-6'>
+                  <p>Time is precious. Our mission is to free up more of it for you to focus on your product line and big picture planning.</p>
+                  <br></br>
+                  <p>Our applications are built on top of Shopify's Inventory Management System and highest-converting checkout.</p>
+                  <br></br>
+                  <p>We combine Shopify's easy to use inventory management with break-neck speeds to create a world class digital storefront.</p>
+                  <br></br>
+                  <p>If operate an existing Shopify store we guarantee that you'll see no disruption during the redesign process.</p>
+                </div>
+              </div>
+
+            </div>
+
+            <div className='w-full bg-gradient-to-tr from-blue-500 rounded-[1px] to-violet-500'>
+              <div className='bg-[#191919] rounded-[1px] hover:scale-[98%] transition-all duration-100 h-full w-full p-4'>
+                <p className='text-[60px] font-bold text-center'>2</p>
+                <p className='text-center text-h3'>Save On Ad Spend</p>
+                <div className='mt-6'>
+                  <p>You shouldn't have to pay more for the same ads as your competitors.</p>
+                  <br></br>
+                  <p>Google Ad prices are determined by an authority score (how many other well known webites redirect to yours) and your website's bounce rate (what % of people leave your site after a few seconds?).</p>
+                  <br></br>
+                  <p>Slower load speeds results in a higher bounce rate and thus more expensive ads. Our framework and hosting allows you to deliver your website at high speeds and as a result pay less to acquire each new customer/client.</p>
+                </div>
+              </div>
+            </div>
+            <div className='w-full bg-gradient-to-tr from-blue-500 rounded-[1px] to-violet-500'>
+              <div className='hover:scale-[98%]  bg-[#191919] rounded-[1px] transition-all duration-100 w-full p-4'>
+                <p className='text-[60px] font-bold text-center'>3</p>
+                <p className='text-center text-h3'>Recover Lost Revenue</p>
+                <div className='mt-6'>
+                  <p>Online stores have an average load time of between 3.0 and 5.8 seconds. Across the internet, if a page takes 6 seconds to load, half of the people attempting to access the page will give up.</p>
+                  <br></br>
+                  <p>For Amazon, this loss translated to a 1% loss in revenue for every additional tenth of a second their page took to load. </p>
+                  <br></br>
+                  <p>To us this is not acceptable. Our value propostion is to mitigate lost sales by using Server Side Rendering to 'pre assemble' your content in the cloud and deliver it at lightning speed via America's fastest Content Delivery Network (AWS CloudFront).</p>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className='flex flex-col items-center bg-black w-full py-3 xl:p-6'>
+          <div className='h-8' alt='spacer'></div>
+
+          <div className='text-white w-full flex flex-col items-center px-8' id='shopify-pricing'>
+        <h3 className='text-h3 text-center'>Shopify Pricing Schedule (E-Commerce)</h3>
+        <div className='flex cursor-default flex-col xl:flex-row mt-8 gap-4' alt='pricing holder'>
+
+          <div className='p-4 bg-[#191919] hover:bg-gradient-to-br from-transparent to-[#282828] items-center flex flex-col xl:items-start' alt='item'>
+            <h4 className='text-h3 text-zinc-300'>Shopify Silver</h4>
+            <p className='mt-2'>We will build a templated Shopify website based on your samples provided, direction and brand guidelines</p>
+            <div className='mt-4'>
+              <p className='text-[18px] font-medium'>Silver Package Details</p>
+              <div className='flex flex-col gap-1 mt-2'>
+                <div className='ml-4'>
+                  <li>Website from Scratch</li>
+                  <li>Shopify IMS Compatible Front End</li>
+                  <li>1 Hour Brainstorm</li>
+                  <li>Customization of Theme</li>
+                  <li>Mobile Responsive</li>
+                  <li>Social Media Integration</li>
+                  <li>Google Maps</li>
+                  <li>Abandoned Cart Email</li>
+                  <li>Mailing List Plugin</li>
+                  <li>Contact Form</li>
+                  <li>Photo Sourcing</li>
+                  <li>2 Rounds of Revisions</li>
+                  <li>Server Side Rendering Front End</li>
+                  <li>Lightning Fast Global Hosting</li>
+                </div>
+              </div>
+              <div className='flex flex-row mt-6 gap-3'>
+                <div className='flex flex-col items-center'>
+                  <p className='text-[28px]'>$2,499</p>
+                  <p>Silver Package</p>
+                </div>
+                <div className='flex flex-row'>
+                <div className='w-[1.5px] h-full bg-white/70 mr-3' alt='spacer'></div>
+                  <div className='flex flex-col'>
+                    <p className='font-medium text-[18px] mb-2'>For Example:</p>
+                    <p className='font-medium text-[20px]'>3 Page Site $3,499</p>
+                    <p className='text-default-400 text-[13px]'>($300 per additional website page)</p>
+
+                    <p className='font-medium text-[20px] mt-2'>5 Page Site $3,999</p>
+                    <p className='text-default-400 text-[13px]'>($300 per additional website page)</p>
+
+                    <p className='font-medium text-[20px] mt-2'>10 Page Site $5,499</p>
+                    <p className='text-default-400 text-[13px]'>($300 per additional website page)</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="w-[1.5px] h-[600px] hidden xl:shown bg-white/70 self-center" alt='spacer'></div>
+          <div className="h-[1.5px] w-[75vw] shown xl:hidden bg-white/70 self-center mt-4 mb-4" alt='spacer'></div>
+
+          <div className='p-4 bg-[#191919] hover:bg-gradient-to-br from-transparent to-[#282828] items-center flex flex-col xl:items-start' alt='item'>
+            <h4 className='text-h3 text-amber-300'>Shopify Gold</h4>
+            <p className='mt-2'>We will build a customized Shopify website based on your samples provided, direction and brand guidelines</p>
+            <div className='mt-4'>
+              <p className='text-[18px] font-medium'>Gold Package Details</p>
+              <div className='flex flex-col gap-1 mt-2'>
+                <div className='ml-4'>
+                  <li>Website from Scratch</li>
+                  <li>Shopify IMS Compatible Front End</li>
+                  <li>1 Hour Brainstorm</li>
+                  <li>Mobile Responsive</li>
+                  <li>Review Sourcing</li>
+                  <li>Social Media Integration</li>
+                  <li>Custom Icons</li>
+                  <li>Google Maps</li>
+                  <li>Abandoned Cart Email</li>
+                  <li>Mailing List Plugin</li>
+                  <li>Contact Form</li>
+                  <li>Photo Sourcing</li>
+                  <li>Google Analytics</li>
+                  <li>Social Sharing</li>
+                  <li>404 Redirect</li>
+                  <li>XML Sitemap</li>
+                  <li>3 Rounds of Revisions</li>
+                  <li>Server Side Rendering Front End</li>
+                  <li>Lightning Fast Global Hosting</li>
+                </div>
+              </div>
+              <div className='flex flex-row mt-6 gap-3'>
+                <div className='flex flex-col items-center'>
+                  <p className='text-[28px]'>$4,999</p>
+                  <p>Gold Package</p>
+                </div>
+                <div className='flex flex-row'>
+                <div className='w-[1.5px] h-full bg-white/70 mr-3'></div>
+                  <div className='flex flex-col'>
+                    <p className='font-medium text-[18px] mb-2'>For Example:</p>
+                    <p className='font-medium text-[20px]'>3 Page Site $5,899</p>
+                    <p className='text-default-400 text-[13px]'>($300 per additional website page)</p>
+
+                    <p className='font-medium text-[20px] mt-2'>5 Page Site $6,499</p>
+                    <p className='text-default-400 text-[13px]'>($300 per additional website page)</p>
+
+                    <p className='font-medium text-[20px] mt-2'>10 Page Site $7,999</p>
+                    <p className='text-default-400 text-[13px]'>($300 per additional website page)</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="w-[1.5px] h-[600px] hidden xl:shown bg-white/70 self-center" alt='spacer'></div>
+          <div className="h-[1.5px] w-[75vw] shown xl:hidden bg-white/70 self-center mt-4 mb-4" alt='spacer'></div>
+
+          <div className='p-4 bg-[#191919] hover:bg-gradient-to-br from-transparent to-[#282828] items-center flex flex-col xl:items-start' alt='item'>
+            <h4 className='text-h3 text-nuetral-300'>Shopify Platinum</h4>
+            <p className='mt-2'>We will build a website from scratch with mock-ups on a Shopify IMS based on your requirements for ultimate success</p>
+            <div className='mt-4'>
+              <p className='text-[18px] font-medium'>Platinum Package Details</p>
+              <div className='flex flex-col gap-1 mt-2'>
+                <div className='ml-4'>
+                  <li>Website from Scratch</li>
+                  <li>Shopify IMS Compatible Front End</li>
+                  <li>Global Data Caching For Fast Content Delivery</li>
+                  <li>2 Page Custom Mock-up</li>
+                  <li>1 Hour Brainstorm</li>
+                  <li>Mobile Responsive</li>
+                  <li>Review Sourcing</li>
+                  <li>Social Media Integration</li>
+                  <li>6 Custom Icons</li>
+                  <li>Google Maps</li>
+                  <li>Abandoned Cart Email</li>
+                  <li>Mailing List Plugin</li>
+                  <li>Contact Form</li>
+                  <li>Social Sharing</li>
+                  <li>Photo Sourcing</li>
+                  <li>404 Redirect</li>
+                  <li>XML Sitemap</li>
+                  <li>Google Analytics</li>
+                  <li>2 Hour “How To” Tutorial</li>
+                  <li>3 Rounds of Revisions</li>
+                  <li>Server Side Rendering Front End</li>
+                  <li>Lightning Fast Global Hosting</li>
+                </div>
+              </div>
+              <div className='flex flex-row mt-6 gap-3'>
+                <div className='flex flex-col items-center'>
+                  <p className='text-[28px]'>$7,499</p>
+                  <p>Platinum Package</p>
+                </div>
+                <div className='flex flex-row'>
+                <div className='w-[1.5px] h-full bg-white/70 mr-3'></div>
+                  <div className='flex flex-col'>
+                    <p className='font-medium text-[18px] mb-2'>For Example:</p>
+                    <p className='font-medium text-[20px]'>3 Page Site $14,999</p>
+                    <p className='text-default-400 text-[13px]'>($150 per additional website page)</p>
+
+                    <p className='font-medium text-[20px] mt-2'>5 Page Site $15,899</p>
+                    <p className='text-default-400 text-[13px]'>($150 per additional website page)</p>
+
+                    <p className='font-medium text-[20px] mt-2'>10 Page Site $17,999</p>
+                    <p className='text-default-400 text-[13px]'>($150 per additional website page)</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+          <Link href='#contact'alt='' className='py-2 px-8 bg-none rounded-[1px] border-2 outline-white group hover:bg-white mt-8'>
+                <p className='text-white group-hover:text-black underline-animation'>Let's Start Winning</p>
+          </Link>
+        <div className='h-4'></div>
+
+      </div>
+
+          <div className='h-3'></div>
+          
+          <div className='flex flex-col  lg:flex-row lg:px-[10vw] mt-4 lg:gap-4'>
+        {/* First Column */}
+        <div className='lg:w-[38vw] w-[85vw] lg:bg-gradient-to-b from-transparent to-[#282828] pr-8 bg-[#191919] p-4 h-fit'>
+          <Accordion className='w-full'>
+            {firstHalfFAQs.map((faq, index) => (
+              <AccordionItem key={index} aria-label={`Accordion ${index + 1}`} subtitle={<p className='text-default-500'>Press to expand</p>} title={<p className='text-white'>{faq.question}</p>}>
+                <div className='text-white p-4'>
+                  {faq.answer}
+                </div>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </div>
+
+        {/* Second Column */}
+        <div className='lg:w-[38vw] w-[85vw] lg:bg-gradient-to-b from-transparent to-[#282828] bg-[#191919] p-4 h-fit'>
+          <Accordion className='w-full'>
+            {secondHalfFAQs.map((faq, index) => (
+              <AccordionItem key={index + midIndex} aria-label={`Accordion ${index + midIndex + 1}`} subtitle={<p className='text-default-500'>Press to expand</p>} title={<p className='text-white'>{faq.question}</p>}>
+                <div className='text-white p-4'>
+                  {faq.answer}
+                </div>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </div>
+      </div>
+          <div className='h-3'></div>
+
+        </div>
+        <div className='bg-black -mt-2' id='contact'>
+          <ContactConverter/>
+        </div>
+
+
+    </RootLayout>
+  )
+}
+
+export default Page
+
+{/**
+<AccordionItem key="16" aria-label="Accordion 3" title={<p className='text-white'>Pricing</p>}>
+  <div className='text-white'>
+    {defaultContent}
+  </div>  
+</AccordionItem>  */}

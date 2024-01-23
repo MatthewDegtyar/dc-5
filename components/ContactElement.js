@@ -3,7 +3,7 @@ import ContactCard from './ContactCard'
 
 const ContactElement = ({hideTags}) => {
   return (
-    <div className='bg-black px-[5vw] mt-0'>
+    <div className='bg-black mt-0' id='contact'>
       <ContactCard hideTags={hideTags}/>
     </div>
   )
