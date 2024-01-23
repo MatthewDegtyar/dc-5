@@ -42,7 +42,7 @@ const EmbedVideo = (props) => {
 
 const Home = () => {
   return (
-    <RootLayout pageTitle='Home'>
+    <RootLayout imageUrl='/img/DClogo1024.png' pageTitle='Home'>
         <div className='flex flex-col lg:flex-row bg-black'>
 
             <div className='lg:w-[50vw] h-[50vh] md:h-auto lg:h-[80vh] overflow-hidden rounded-[1px] flex flex-col'>

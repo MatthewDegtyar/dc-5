@@ -67,7 +67,7 @@ const Page = () => {
   const secondHalfFAQs = FAQs.slice(midIndex);
   
   return (
-    <RootLayout hideContact={true} pageTitle='Social Media'>
+    <RootLayout imageUrl='/img/bg12.jpeg' hideContact={true} pageTitle='Social Media'>
         <div className='bg-black h-[25vh] p-4 xl:p-8 bg-hero-pattern12  bg-cover bg-center bg-no-repeat'>
             <div className='bg-black/60 rounded-[1px] flex flex-col gap-2 p-3 xl:p-6 items-center  justify-center text-white w-full h-full'>
                 <h1 className='text-title text-pretty text-center'>Ready To Empower Your Business?</h1>
