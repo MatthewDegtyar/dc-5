@@ -1,9 +1,10 @@
-import RootLayout from '@/styles/RootLayout'
+import RootLayout from '../../styles/RootLayout'
+
 import React from 'react'
 import { useRouter } from 'next/router';
 import {Accordion, AccordionItem, Button} from "@nextui-org/react";
 import Link from 'next/link';
-import ContactConverter from '@/components/ContactConverter';
+import ContactConverter from '../../components/ContactConverter';
 import { SiMaterialdesign } from "react-icons/si";
 import { FaConnectdevelop } from "react-icons/fa";
 import { IoRocket } from "react-icons/io5";
@@ -67,7 +68,7 @@ const Page = () => {
   const secondHalfFAQs = FAQs.slice(midIndex);
   
   return (
-    <RootLayout imageUrl='/img/bg6.jpeg' hideContact={true} pageTitle='White Label'>
+    <RootLayout canon_url={`services/white-label`} meta_description='White label websites' imageUrl='/img/bg6.jpeg' hideContact={true} pageTitle='White Label'>
         <div className='bg-black h-[25vh] p-4 xl:p-8 bg-hero-pattern6  bg-cover bg-center bg-no-repeat'>
             <div className='bg-black/60 rounded-[1px] flex flex-col gap-2 p-3 xl:p-6 items-center  justify-center text-white w-full h-full'>
                 <h1 className='text-title text-pretty text-center'>Ready To Empower Your Business?</h1>
@@ -175,10 +176,3 @@ const Page = () => {
 }
 
 export default Page
-
-{/**
-<AccordionItem key="16" aria-label="Accordion 3" title={<p className='text-white'>Pricing</p>}>
-  <div className='text-white'>
-    {defaultContent}
-  </div>  
-</AccordionItem>  */}

@@ -1,22 +1,23 @@
 import React from 'react'
 import Head from 'next/head'
-import Navbar from '@/components/Navbar'
-import Footer from '@/components/Footer'
-import ContactConverter from '@/components/ContactConverter'
-import FeaturedElement from '@/components/FeaturedElement'
-import DMElement from '@/components/DMElement'
-import Badges from '@/components/Badges'
+import Navbar from '../components/Navbar'
+import Footer from '../components/Footer'
+import ContactConverter from '../components/ContactConverter'
+import FeaturedElement from '../components/FeaturedElement'
+import DMElement from '../components/DMElement'
 
-const RootLayout = ({pageTitle, imageUrl, children, hideContact, hideFeatured, hideDME, hideBadges}) => {
+const RootLayout = ({pageTitle, canon_url, imageUrl, meta_description,children, hideContact, hideFeatured, hideDME}) => {
   return (
     <div >
         <Head>
             <title>{`${pageTitle} - Degtyar Consulting`}</title>
-            <meta name="description" content="Digital Consultants" />
+
+            <meta name="description" content={meta_description} />
+
             <link rel="icon" href="/img/DClogo1024.png" />
-            <link rel='canonical' href='https://www.degtyarconsulting.com/' />
+            <link rel='canonical' href={`https://www.degtyarconsulting.com/${canon_url}`} />
             <meta property="og:type" content="website" />
-            <meta property="og:url" content="https://www.degtyarconsulting.com/" />
+            <meta property="og:url" content={`https://www.degtyarconsulting.com/${canon_url}`} />
             <meta property="og:description" content="Degtyar Consulting" />
             <meta
                 property="og:image"

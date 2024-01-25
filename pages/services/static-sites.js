@@ -1,9 +1,9 @@
-import RootLayout from '@/styles/RootLayout'
+import RootLayout from '../../styles/RootLayout'
 import React from 'react'
 import { useRouter } from 'next/router';
 import {Accordion, AccordionItem, Button} from "@nextui-org/react";
 import Link from 'next/link';
-import ContactConverter from '@/components/ContactConverter';
+import ContactConverter from '../../components/ContactConverter';
 
 const FAQs = [
   {
@@ -63,7 +63,7 @@ const Page = () => {
   const firstHalfFAQs = FAQs.slice(0, midIndex);
   const secondHalfFAQs = FAQs.slice(midIndex);
   return (
-    <RootLayout imageUrl='/img/bg7.jpeg' hideContact={true} pageTitle='Static Sites'>
+    <RootLayout canon_url={`services/static-sites`} meta_description='How to make a business website' imageUrl='/img/bg7.jpeg' hideContact={true} pageTitle='Static Sites'>
         <div className='bg-black h-[25vh] p-4 xl:p-8 bg-hero-pattern7 bg-cover bg-center bg-no-repeat'>
             <div className='bg-black/60 rounded-[1px] flex flex-col gap-2 p-3 xl:p-6 items-center  justify-center text-white w-full h-full'>
                 <h1 className='text-title text-pretty text-center'>Ready To Empower Your Business?</h1>

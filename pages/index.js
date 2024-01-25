@@ -1,7 +1,5 @@
-import RootLayout from '@/styles/RootLayout'
+import RootLayout from '../styles/RootLayout'
 import React, { useEffect, useRef } from 'react'
-import FeaturedElement from '@/components/FeaturedElement';
-import DMElement from '@/components/DMElement';
 
 const EmbedVideo = (props) => {
     const videoRef = useRef(null);

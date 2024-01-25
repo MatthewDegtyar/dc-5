@@ -21,7 +21,7 @@ const FeaturedElement = () => {
                 
                 <div className='bg-black/0 flex flex-col gap-2 px-6 text-center text-white w-full h-full'>
                     <h3 className='text-h3'>Professional Website Design</h3>
-                    <p>We design and build a multifunctional template, you deliver it to your clients.</p>
+                    <p>Effectively convey the quality of your service.</p>
                 </div>
 
                 <div className=' w-full flex items-center shown lg:hidden self-center flex-col mt-8 gap-4' alt='mobile'>

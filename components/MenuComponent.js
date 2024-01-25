@@ -33,13 +33,13 @@ const MiddleLayer = ({ data, selectedItem, onItemClick }) => {
 return (
     <div className="font-bold flex flex-col w-full text-sub gap-2 ">
     {data.map((item) => (
-        <div onClick={() => onItemClick(item)} className="flex cursor-pointer flex-col border-b-1" key={item.id}>
+        <div className="flex cursor-pointer flex-col border-b-1" key={item.id}>
         {item.submenu ? (
-              <ul className="font-bold h-[60px] mt-[-7px] rounded-[2px] items-center text-center flex justify-center text-wrap border-white">
+              <ul onClick={() => onItemClick(item)} className="font-bold h-[60px] mt-[-7px] rounded-[2px] items-center text-center flex justify-center text-wrap border-white">
                 {item.title}<RxCaretDown size={30} className="-rotate-90"/>
               </ul>
         ) : (
-            <Link  href={item.link} onClick={() => onItemClick(item)}>
+            <Link  href={item.link}>
                 <ul className="font-bold h-[60px] mt-[-7px] rounded-[2px] items-center text-center flex justify-center text-wrap border-white">
                   {item.title}
                 </ul>
@@ -55,7 +55,7 @@ return (
 const BottomLayer = ({ selectedItem }) => {
 return (
     <div className=" gap-2 text-sub">
-    {selectedItem.submenu.map((item) => (
+    {selectedItem.submenu?.map((item) => (
         <Link className="flex flex-col border-b-1" href={item.link} key={item.id}>
               <ul className="font-bold h-[60px] rounded-[2px] items-center text-center flex justify-center text-wrap border-white">
                 {item.title}

@@ -56,7 +56,7 @@ function Navbar () {
 
   };
   useEffect(() => {
-    console.log("menuShown value:", menuShown);
+    //console.log("menuShown value:", menuShown);
   }, [menuShown]);
   
   useEffect(() => {
@@ -86,6 +86,7 @@ function Navbar () {
       <ul onClick={()=>handleCloseAll()} className='underline-animation-white'><Link href='/' >Home</Link></ul>
       <div className='cursor-pointer  flex flex-row gap-2 items-center' onClick={() => handleDrop()}><ul className='underline-animation-white'>Services</ul><RxCaretDown size={30} className={`${dropShown ? 'rotate-180' : ''} transition-all duration-300`} /></div>
       <div className='cursor-pointer flex flex-row gap-2 items-center' onClick={() => handleFeatured()}><ul className='underline-animation-white'>Featured Projects</ul><RxCaretDown size={30} className={`${featuredShown ? 'rotate-180' : ''} transition-all duration-300`} /></div>
+      <ul onClick={()=>handleCloseAll()} className='underline-animation-white'><Link href='/news'>News</Link></ul>
       <ul onClick={()=>handleCloseAll()} className='underline-animation-white'><Link href='/contact'>Contact</Link></ul>
 
     </div>
