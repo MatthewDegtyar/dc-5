@@ -11,7 +11,7 @@ const TopLayer = ({ data, onItemClick }) => {
           <div className="cursor-pointer" key={item.id}>
             {item.submenu ? (
               <div className="flex flex-col items-center text-center justify-center border-b-1 h-[60px]" onClick={() => onItemClick(item)}>
-                <ul className="flex flex-row items-center gap-2">{item.title} <RxCaretDown size={30} className="-rotate-90"/></ul>
+                <ul className="flex flex-row items-center gap-2">{item.title} <RxCaretDown size={30} className="-rotate-90 mt-[3px]"/></ul>
 
 
               </div>
@@ -36,7 +36,7 @@ return (
         <div className="flex cursor-pointer flex-col border-b-1" key={item.id}>
         {item.submenu ? (
               <ul onClick={() => onItemClick(item)} className="font-bold h-[60px] mt-[-7px] rounded-[2px] items-center text-center flex justify-center text-wrap border-white">
-                {item.title}<RxCaretDown size={30} className="-rotate-90"/>
+                {item.title}<RxCaretDown size={30} className="-rotate-90 mt-[3px]"/>
               </ul>
         ) : (
             <Link  href={item.link}>
@@ -104,7 +104,7 @@ return (
         )}
         {layerShowing > 0 && (
           <button className='mt-8 gap-2 flex flex-row items-center justify-center h-[80px] w-full mb-96 text-[20px] font-medium' onClick={handleBackClick}>
-            <RxCaretDown className="rotate-90" size={30}/>Back
+            <RxCaretDown className="rotate-90 mt-[3px]" size={30}/><p>Back</p>
           </button>
         )}
       </div>

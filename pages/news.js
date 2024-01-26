@@ -54,14 +54,15 @@ export default function Page({ projects: initialProjects }) {
                 />
               </div>
             )}
-            <div className='flex flex-row gap-4 items-end mt-2'>
+            <h2 className="mt-1 text-h3 text-black">{project?.name}</h2>
+
+            <div className='flex flex-row gap-4 items-end mt-4'>
               <p className=''>{project.author}</p>
               <p className='text-default-400 text-[14px]'>{formatDate({date: project?._createdAt })}</p>
             </div>
 
 
-            <h2 className="mt- text-h3 text-black">{project?.name}</h2>
-            <h3 className='text-[18px]'>{project.tagline}</h3>
+            <h3 className='text-[18px] mt-1'>{project.tagline}</h3>
           </Link>
         ))}
         </div>

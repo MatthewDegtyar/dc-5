@@ -74,7 +74,7 @@ function Navbar () {
   }, []);
 
   return (
-    <nav className={`flex z-50 top-0 ${menuShown ? 'fixed' : 'absolute '} bg-black flex-row w-[100vw] justify-between items-center px-[5vw] h-[125px]`}>
+    <nav className={`flex z-50 top-0 ${menuShown ? 'fixed' : 'absolute '} bg-black text-nowrap flex-row w-[100vw] justify-between items-center px-[5vw] h-[125px]`}>
     <Link href='/'>
       <div>
         <div className='border-3 p-1 w-[200px] text-white font-bold outline-white'>

@@ -23,7 +23,7 @@ const RootLayout = ({pageTitle, canon_url, imageUrl, meta_description,children, 
             <meta property="og:description" content="Degtyar Consulting" />
             <meta
                 property="og:image"
-                content={imageUrl}
+                content={imageUrl | '/img/DClogo1024.png'}
             />
             <meta name="og:title" content={`Degtyar Consulting - ${pageTitle}`} />
             <meta name="twitter:card" content="summary_large_image" />  
