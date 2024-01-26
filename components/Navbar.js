@@ -77,7 +77,7 @@ function Navbar () {
     <nav className={`flex z-50 top-0 ${menuShown ? 'fixed' : 'absolute '} bg-black text-nowrap flex-row w-[100vw] justify-between items-center px-[5vw] h-[125px]`}>
     <Link href='/'>
       <div>
-        <div className='border-3 p-1 w-[200px] text-white font-bold outline-white'>
+        <div className='border-3 p-1 w-[200px] text-white outline-white'>
             <p className='mt-8 ml-1'>Degtyar Consulting</p>
         </div>
       </div>

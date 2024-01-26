@@ -17,7 +17,7 @@ const Footer = () => {
                     <div>
                         <Link href='/' alt='/'>
                             <div>
-                                <div className='border-3 p-1 w-[200px] text-white font-bold outline-white'>
+                                <div className='border-3 p-1 w-[200px] text-white outline-white'>
                                     <p className='mt-8 ml-1'>Degtyar Consulting</p>
                                 </div>
                             </div>                       

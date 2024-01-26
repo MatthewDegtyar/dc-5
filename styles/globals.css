@@ -87,6 +87,8 @@
 ::selection {
   background-color: var(--c-yellow);
   color: var(--c-black);
+  -webkit-background-color: var(--c-yellow);
+  -webkit-color: var(--c-black);
 }
 
 .div-style {
