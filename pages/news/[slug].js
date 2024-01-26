@@ -8,6 +8,15 @@ import RootLayout from "../../styles/RootLayout";
 export default function Project({ project }) {
 
   const [formattedDate, setFormattedDate] = useState();
+  const [isLoaded, setIsLoaded] = useState(true);
+
+  const  handleImageLoad = async() => {
+    setIsLoaded(true);
+  };
+
+  const handleImageError = () => {
+    setIsLoaded(true);
+  };
 
   useEffect(() => {
     if (project._createdAt) {
@@ -38,15 +47,16 @@ export default function Project({ project }) {
 
   return (
     <RootLayout canon_url={`news/${project.slug}`} meta_description={project.tagline} pageTitle={project.name} imageUrl={project.image}>
-      <div className="text-black flex flex-col items-center bg-white py-8">
+      <div className="text-black flex flex-col items-center bg-white py-2">
         <div className="absolute text-white w-[90vw] h-[50vh] " alt='descr holder'>
-          <Image src={project.image} alt={project.name} width={1920} height={1080} className="w-full rounded-[1px] z-10 h-[50vh] object-cover absolute" />
+            <Image placeholder="blur" blurDataURL={`data:image/jpeg;base64,/img/bg1.webp`} onLoad={handleImageLoad} onError={handleImageError} src={project.image} alt={project.name} width={1400} height={500} className="w-full bg-black rounded-[1px] z-10 h-[50vh] object-cover absolute" />
           <div className=" w-[90vw] flex flex-col overflow-hidden items-center place-content-center left-0 backdrop-blur-[1px] z-40 bg-[#191919]/60 bottom-0 px-8 absolute gap-4 p-4" alt='header'>
             <div className="md:w-[60vw] w-[90vw]">
               <div className="flex flex-row gap-16">
+
                     <Image
                       className="rounded-full w-[100px] hover:scale-[95%] transition-all duration-300 h-[100px] resize-none "
-                      src='/img/DClogo1024.png'
+                      src='/img/DClogo1024.webp'
                       width={75}
                       height={75}
                       priority
@@ -61,7 +71,7 @@ export default function Project({ project }) {
                     )}            
                   <h1 className="text-title ">{project.name}</h1>
 
-              <h2 className="text-h3 mt-2">{project.tagline}</h2>
+              <h2 className="text-h3-g mt-2">{project.tagline}</h2>
 
                 </div>
               </div>
@@ -104,12 +114,19 @@ export default function Project({ project }) {
 
 export async function getServerSideProps({ params }) {
   // Fetch data using getProject or any other data-fetching method
-  const project = await getProject(params.slug);
-  console.log(project);
-  // Pass the fetched data as props
-  return {
-    props: {
-      project,
-    },
-  };
+  try {
+    const project = await getProject(params.slug);
+    //console.log(project);
+
+    // Pass the fetched data as props
+    return {
+      props: {
+        project,
+      },
+    };
+
+  } catch (error) {
+    console.log("Error loading content: ",error)
+  }
+
 }

@@ -68,7 +68,7 @@ const Page = () => {
   const secondHalfFAQs = FAQs.slice(midIndex);
   
   return (
-    <RootLayout canon_url={`services/seo`} meta_description='How to do seo?' imageUrl='/img/bg11.jpeg' hideContact={true} pageTitle='SEO'>
+    <RootLayout canon_url={`services/seo`} meta_description='How to do seo?' imageUrl='/img/bg11.webp' hideContact={true} pageTitle='SEO'>
         <div className='bg-black h-[25vh] p-4 xl:p-8 bg-hero-pattern11  bg-cover bg-center bg-no-repeat'>
             <div className='bg-black/60 rounded-[1px] flex flex-col gap-2 p-3 xl:p-6 items-center  justify-center text-white w-full h-full'>
                 <h1 className='text-title text-pretty text-center'>Ready To Empower Your Business?</h1>
@@ -82,7 +82,7 @@ const Page = () => {
           <p className='mt-2 text-center max-w-[500px]'>We research what content drives traffic to your competitors' sites and actively divert it to yours.</p>
           <div className='w-full' alt='holder'>
             <div className='bg-[#191919] flex gap-4 flex-col xl:flex-row items-center xl:items-start mt-8 p-4'>
-              <h4 className='text-h3 mr-4 mb-4 xl:mb-0'>The Process</h4>
+              <h4 className='text-h3 mr-4 mb-4 xl:mb-0 text-nowrap'>The Process</h4>
               <div className='flex overflow-x-scroll flex-col xl:flex-row gap-8' alt='sub holder'>
 
                 <div className='flex flex-col items-center w-96' alt='subitem'>

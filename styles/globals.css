@@ -2,9 +2,46 @@
 @tailwind components;
 @tailwind utilities;
 
+
+@font-face {
+  font-family: 'Guardian Sans Light';
+  src: url('/fonts/guardian-sans-light.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Guardian Sans Medium';
+  src: url('/fonts/guardian-sans-medium.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Guardian Sans Regular';
+  src: url('/fonts/guardian-sans-regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Sanomat Light';
+  src: url('/fonts/sanomat-light.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Sanomat Medium';
+  src: url('/fonts/sanomat-medium.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
 :root {
   background-color: black;
-
+  font-family: 'Guardian Sans Regular' ;
+  font-size: 17px;
   --c-black: #000;
   --c-yellow: #fdf147;
 }
@@ -14,7 +51,7 @@
 }
 
 .rotated-background {
-  background-image: url('/img/bg6.jpeg'); /* Replace with the path to your actual image */
+  background-image: url('/img/bg6.webp'); /* Replace with the path to your actual image */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -34,7 +71,7 @@
 }
 
 .text-title {
-  @apply text-2xl md:text-3xl lg:text-5xl font-bold;
+  @apply text-2xl md:text-3xl lg:text-5xl font-bold font-sanomat-light;
 }
 
 .text-h2 {
@@ -42,7 +79,10 @@
 }
 
 .text-h3 {
-  @apply text-xl md:text-3xl font-medium
+  @apply text-xl md:text-3xl font-medium font-sanomat-light;
+}
+.text-h3-g {
+  @apply text-xl md:text-3xl font-medium font-sanomat-light;
 }
 ::selection {
   background-color: var(--c-yellow);

@@ -3,7 +3,7 @@ import React, {useState,useEffect} from 'react'
 import Link from 'next/link';
 import Image from 'next/image';
 import { getProjects } from '../sanity/sanity-utils';
-
+import { Skeleton } from '@nextui-org/react';
 
 export default function Page({ projects: initialProjects }) {
   const [projects, setProjects] = useState(initialProjects || []);
@@ -43,7 +43,7 @@ export default function Page({ projects: initialProjects }) {
         <div className="mt-5  grid md:grid-cols-2 lg:grid-cols-3 gap-8">{projects.map((project) => (
           <Link href={`/news/${project.slug}`} key={project?._id} className="group">
             {project?.image && (
-              <div className='overflow-hidden'>
+              <div className='overflow-hidden rounded-[1px] bg-black'>
                 <Image
                   src={project?.image}
                   alt={project?.name}

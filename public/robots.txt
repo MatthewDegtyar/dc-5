@@ -1,4 +1,3 @@
-//robots.txt
 
 # Block crawlers
 User-agent: *

@@ -8,13 +8,15 @@ import DMElement from '../components/DMElement'
 
 const RootLayout = ({pageTitle, canon_url, imageUrl, meta_description,children, hideContact, hideFeatured, hideDME}) => {
   return (
-    <div >
+    <div lang="en">
         <Head>
             <title>{`${pageTitle} - Degtyar Consulting`}</title>
-
             <meta name="description" content={meta_description} />
+            {/**
+            <meta name="content_origin"  content={Date()}/>
+ */}
 
-            <link rel="icon" href="/img/DClogo1024.png" />
+            <link rel="icon" href="/svg/logo.svg" />
             <link rel='canonical' href={`https://www.degtyarconsulting.com/${canon_url}`} />
             <meta property="og:type" content="website" />
             <meta property="og:url" content={`https://www.degtyarconsulting.com/${canon_url}`} />

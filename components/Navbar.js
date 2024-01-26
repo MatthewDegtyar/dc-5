@@ -83,11 +83,11 @@ function Navbar () {
       </div>
     </Link>
     <div className='lg:shown ml-12 hidden text-sub items-center text-white gap-8 lg:flex flex-row'>
-      <ul onClick={()=>handleCloseAll()} className='underline-animation-white'><Link href='/' >Home</Link></ul>
+      <ul onClick={()=>handleCloseAll()} className='underline-animation-white'><Link href='/' alt='home'>Home</Link></ul>
       <div className='cursor-pointer  flex flex-row gap-2 items-center' onClick={() => handleDrop()}><ul className='underline-animation-white'>Services</ul><RxCaretDown size={30} className={`${dropShown ? 'rotate-180' : ''} transition-all duration-300`} /></div>
       <div className='cursor-pointer flex flex-row gap-2 items-center' onClick={() => handleFeatured()}><ul className='underline-animation-white'>Featured Projects</ul><RxCaretDown size={30} className={`${featuredShown ? 'rotate-180' : ''} transition-all duration-300`} /></div>
-      <ul onClick={()=>handleCloseAll()} className='underline-animation-white'><Link href='/news'>News</Link></ul>
-      <ul onClick={()=>handleCloseAll()} className='underline-animation-white'><Link href='/contact'>Contact</Link></ul>
+      <ul onClick={()=>handleCloseAll()} className='underline-animation-white'><Link href='/news'alt='news'>News </Link></ul>
+      <ul onClick={()=>handleCloseAll()} className='underline-animation-white'><Link href='/contact'alt='contact'>Contact</Link></ul>
 
     </div>
     <div className='lg:shown ml-12 hidden text-sub items-center text-white gap-4 lg:flex flex-row'>
@@ -132,19 +132,19 @@ function Navbar () {
         <div className='flex flex-col mt-8'>
             <p className='text-[20px] font-semibold text-start'>Web Development</p>
             <div className='mt-5 flex flex-col gap-4'>
-                <Link onClick={() => handleCloseAll()} href='/services/static-sites' alt='static site' className='underline-animation-white2 w-fit'>Static Sites</Link>
-                <Link onClick={() => handleCloseAll()} href='/services/wordpress-cms' alt='static site' className='underline-animation-white2 w-fit'>WordPress CMS</Link>
-                <Link onClick={() => handleCloseAll()} href='/services/e-commerce' alt='static site' className='underline-animation-white2 w-fit'>Shopify IMS (E-Commerce)</Link>
-                <Link onClick={() => handleCloseAll()} href='/services/white-label' alt='static site' className='underline-animation-white2 w-fit'>White Label</Link>
+                <Link onClick={() => handleCloseAll()} href='/services/static-sites' alt='Static Sites' className='underline-animation-white2 w-fit'>Static Sites</Link>
+                <Link onClick={() => handleCloseAll()} href='/services/wordpress-cms' alt='WordPress CMS' className='underline-animation-white2 w-fit'>WordPress CMS</Link>
+                <Link onClick={() => handleCloseAll()} href='/services/e-commerce' alt='Shopify E-Commerce' className='underline-animation-white2 w-fit'>Shopify IMS (E-Commerce)</Link>
+                <Link onClick={() => handleCloseAll()} href='/services/white-label' alt='White Label' className='underline-animation-white2 w-fit'>White Label</Link>
             </div>
         </div>
 
         <div className='flex flex-col mt-8'>
             <p className='text-[20px] font-semibold text-start'>Digital Marketing</p>
             <div className='mt-5 flex flex-col gap-4'>
-                <Link onClick={() => handleCloseAll()} href='/services/seo' alt='static site' className='underline-animation-white2 w-fit'>Search Engine Optimization</Link>
-                <Link onClick={() => handleCloseAll()} href='/services/social-media' alt='static site' className='underline-animation-white2 w-fit'>Social Media Management & Strategy</Link>
-                <Link onClick={() => handleCloseAll()} href='/services/google-ads' alt='static site' className='underline-animation-white2 w-fit'>Google Ads</Link>
+                <Link onClick={() => handleCloseAll()} href='/services/seo' alt='SEO' className='underline-animation-white2 w-fit'>Search Engine Optimization</Link>
+                <Link onClick={() => handleCloseAll()} href='/services/social-media' alt='Social Media Management' className='underline-animation-white2 w-fit'>Social Media Management & Strategy</Link>
+                <Link onClick={() => handleCloseAll()} href='/services/google-ads' alt='Google Ads' className='underline-animation-white2 w-fit'>Google Ads</Link>
                 {/**
                 <Link onClick={() => handleCloseAll()} href='/services/static-site' alt='static site' className='underline-animation-white2 w-fit'>Meta (Facebook) Ads</Link>
                 <Link onClick={() => handleCloseAll()} href='/services/static-site' alt='static site' className='underline-animation-white2 w-fit'>Instagram Ads</Link>
@@ -174,7 +174,7 @@ function Navbar () {
                 </Link>
             </div>
             <Image
-                src='/img/1.png'
+                src='/img/1.webp'
                 height={200}
                 width={200}
                 alt='img'
@@ -187,11 +187,11 @@ function Navbar () {
     </div>
   </div>
 
-  <div className={`w-[100vw] shadow-2xl text-white mt-[125px] xl:flex-col px-[7.5vw] hidden  overflow-y-scroll bg-black absolute left-0 top-0 h-[500px] ${featuredShown ? 'lg:shown lg:flex' : 'hidden'}`}>
+  <div className={`w-[100vw] shadow-2xl text-white overflow-hidden mt-[125px] xl:flex-col px-[7.5vw] hidden  overflow-y-scroll bg-black absolute left-0 top-0 h-[500px] ${featuredShown ? 'lg:shown lg:flex' : 'hidden'}`}>
   <div className='mt-8 mb-16' alt='spacer'>
         <div className='h-[1px] w-full bg-white text-black mb-8'>.</div>
       
-    <div className='grid lg:grid-cols-4  grid-cols-2 w-full gap-4 lg:gap-8'>
+    <div className='grid lg:grid-cols-4 overflow-hidden grid-cols-2 w-full gap-4 lg:gap-8'>
 
     <div className='flex text-sub flex-col items-center' alt='item'>
         <div className='overflow-hidden '>
@@ -201,7 +201,7 @@ function Navbar () {
             <div>
                 <Image
                     className='hover:sm:scale-125 w-[220px] h-[300px] rounded-[1px] object-cover hover:scale-150 transition-transform duration-300'
-                    src='/img/promo1.jpeg'
+                    src='/img/promo1.webp'
                     width={300}
                     height={720}
                     alt='car'
@@ -221,7 +221,7 @@ function Navbar () {
                 <div>
                     <Image
                         className='hover:sm:scale-125 hover:scale-150 w-[220px] h-[300px] rounded-[1px] object-cover transition-transform duration-300'
-                        src='/img/promo2.jpeg'
+                        src='/img/promo2.webp'
                         width={300}
                         height={720}
                         alt='car'
@@ -240,7 +240,7 @@ function Navbar () {
               <div>
                   <Image
                       className='hover:sm:scale-125 hover:scale-150 w-[220px] h-[300px] object-cover transition-transform duration-300'
-                      src='/img/clean.png'
+                      src='/img/clean.webp'
                       width={300}
                       height={720}
                       alt='car'
@@ -259,7 +259,7 @@ function Navbar () {
               <div>
                   <Image
                       className='hover:sm:scale-125 hover:scale-150 w-[220px] h-[300px] rounded-[1px] object-cover transition-transform duration-300'
-                      src='/img/20.png'
+                      src='/img/20.webp'
                       width={300}
                       height={720}
                       alt='car'
