@@ -1,0 +1,13 @@
+/** slug.module.css */
+
+.news h4 {
+    @apply text-lg md:text-xl font-medium font-guardian-regular mb-1;
+  }
+  
+.news h3 {
+@apply text-xl md:text-2xl font-guardian-regular mb-1;
+}
+
+.news p {
+    @apply mb-4
+}

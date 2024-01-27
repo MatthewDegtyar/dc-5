@@ -36,7 +36,7 @@ const pageFields = `
 `;
 
 export async function getProjects(): Promise<Project[]> {
-  return client.fetch(groq`*[_type == "project"]{${projectFields}}`);
+  return client.fetch(groq`*[_type == "project"]{${projectFields}} | order(_createdAt desc)`);
 }
 
 export async function getProject(slug: string): Promise<Project> {

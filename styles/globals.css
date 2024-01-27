@@ -88,7 +88,7 @@ to   { opacity: 1; }
       scrollbar-width: none;  /* Firefox */
 }
 }
-
+@layer base {
 .text-title {
   @apply text-2xl md:text-3xl lg:text-5xl font-bold font-sanomat-light;
 }
@@ -101,7 +101,10 @@ to   { opacity: 1; }
   @apply text-xl md:text-3xl font-medium font-sanomat-light;
 }
 .text-h3-g {
-  @apply text-xl md:text-3xl font-medium font-sanomat-light;
+  @apply text-xl md:text-3xl font-medium font-guardian-regular;
+}
+
+
 }
 ::selection {
   background-color: var(--c-yellow);

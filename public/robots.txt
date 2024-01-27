@@ -7,3 +7,14 @@ Disallow: /admin
 # Allow all crawlers
 User-agent: *
 Allow: /
+Allow: /contact
+Allow: /news
+Allow: /sitemap
+Allow: /news/
+Allow: /services/e-commerce
+Allow: /services/google-ads
+Allow: /services/social-media
+Allow: /services/seo
+Allow: /services/static-sites
+Allow: /services/white-label
+Allow: /services/wordpress-cms

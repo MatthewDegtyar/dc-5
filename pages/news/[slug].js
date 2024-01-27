@@ -4,6 +4,7 @@ import Image from "next/image"
 import React, {useEffect, useState} from "react";
 import Link from "next/link";
 import RootLayout from "../../styles/RootLayout";
+import styles from '../../styles/slug.module.css';
 
 export default function Project({ project }) {
 
@@ -53,7 +54,7 @@ export default function Project({ project }) {
         <div className="absolute text-white w-[90vw] h-[50vh] " alt='descr holder'>
             <Image placeholder="blur" blurDataURL={`data:image/jpeg;base64,/img/bg1.webp`} onLoad={handleImageLoad} onError={handleImageError} src={project?.image} alt={project?.name} width={1400} height={500} className="w-full bg-black rounded-[1px] z-10 h-[50vh] object-cover absolute" />
           <div className=" w-[90vw] flex flex-col overflow-hidden items-center place-content-center left-0 backdrop-blur-[1px] z-40 bg-[#191919]/60 bottom-0 px-8 absolute gap-4 p-4" alt='header'>
-            <div className="md:w-[60vw] w-[90vw]">
+            <div className="lg:w-[60vw] w-[90vw] px-2">
               <div className="flex flex-row gap-16">
 
                     <Image
@@ -70,10 +71,11 @@ export default function Project({ project }) {
                     <Link href={project?.author_link} alt={project?.author_link}><p className="text-default-200 text-[20px] font-medium underline-animation-white2">{project?.author}</p></Link>
                     ) : (
                       <p className="text-white">author: {project?.author}</p>
-                    )}            
-                  <h1 className="text-title ">{project?.name}</h1>
+                    )}           
+                                  <h1 className="text-h3-g">{project?.tagline}</h1>
+ 
+                  <h2 className="text-title mt-2">{project?.name}</h2>
 
-              <h2 className="text-h3-g mt-2">{project?.tagline}</h2>
 
                 </div>
               </div>
@@ -91,7 +93,7 @@ export default function Project({ project }) {
           <div className="h-[1.5px] w-full bg-default-500"></div>
         </div>
 
-        <div className="text-lg text-black mt-5 text-start md:w-[60vw] w-[90vw]">
+        <div className={`${styles.news} text-black mt-5 text-start md:w-[60vw] w-[90vw]`}>
           <PortableText value={project?.content} />
         </div>
 

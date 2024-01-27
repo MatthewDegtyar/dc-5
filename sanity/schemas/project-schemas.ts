@@ -1,3 +1,5 @@
+
+
 const project = {
     name: "project",
     title: "Projects",
@@ -18,6 +20,19 @@ const project = {
         name: "tagline",
         title: "Tagline",
         type: "string",
+      },
+      {
+        name: "topic",
+        title: "Topic",
+        type: "string",
+        options: {
+          list: [
+            { "title": "Web Design", "value": "Web Design"},
+            { "title": "Marketing", "value": "Marketing"},
+            { "title": "Misc", "value": "Misc"},
+
+          ],
+        }
       },
       {
         name: "author",
@@ -52,7 +67,22 @@ const project = {
         name: "content",
         title: "Content",
         type: "array",
-        of: [{ type: "block" }]
+        of: [
+          {
+            type: "block",
+            
+          },
+          {
+            type: 'image',
+            fields: [
+              {
+                name: "alt",
+                title: "Alt",
+                type: "string"
+              }
+            ]
+          }
+        ],
       },
       {
         name: "closing",
@@ -60,7 +90,23 @@ const project = {
         type: "array",
         of: [{ type: "block" }]
       }
-    ]
+    ],
+    orderings: [
+      {
+        title: 'Release Date, New',
+        name: 'releaseDateDesc',
+        by: [
+          {field: '_createdAt', direction: 'desc'}
+        ]
+      },
+      {
+        title: 'Release Date, Old',
+        name: 'releaseDateAsc',
+        by: [
+          {field: '_createdAt', direction: 'asc'}
+        ]
+      },
+    ],
   }
   
   export default project;

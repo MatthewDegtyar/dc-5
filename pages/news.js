@@ -56,7 +56,7 @@ export default function Page({ projects: initialProjects }) {
             )}
             <h2 className="mt-1 text-h3 text-black">{project?.name}</h2>
 
-            <div className='flex flex-row gap-4 items-end mt-4'>
+            <div className='flex flex-row gap-4 items-end mt-3'>
               <p className=''>{project.author}</p>
               <p className='text-default-400 text-[14px]'>{formatDate({date: project?._createdAt })}</p>
             </div>
