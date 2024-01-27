@@ -6,7 +6,7 @@ export default function sitemap() {
 }
 
 export async function getServerSideProps({ res }) {
-  const baseUrl = `https://www.DegtyarConsulting.com`; // Remove angle brackets from the URL
+  const baseUrl = `https://www.degtyarconsulting.com`; // Remove angle brackets from the URL
 
 
   const query = groq`{

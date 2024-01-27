@@ -12,18 +12,19 @@ const RootLayout = ({pageTitle, canon_url, imageUrl, meta_description,children, 
         <Head>
             <title>{`${pageTitle} - Degtyar Consulting`}</title>
             <meta name="description" content={meta_description} />
+            <meta name="viewport" content="width=device-width, initial-scale=1"/>
             {/**
             <meta name="content_origin"  content={Date()}/>
  */}
 
-            <link rel="icon" href="/svg/logo.svg" />
+            <link rel="icon" type="image/svg" href="/svg/logo.svg" />
             <link rel='canonical' href={`https://www.degtyarconsulting.com/${canon_url}`} />
             <meta property="og:type" content="website" />
             <meta property="og:url" content={`https://www.degtyarconsulting.com/${canon_url}`} />
             <meta property="og:description" content="Degtyar Consulting" />
             <meta
                 property="og:image"
-                content={imageUrl | '/img/DClogo1024.png'}
+                content={'/img/DClogo1024.png'}
             />
             <meta name="og:title" content={`Degtyar Consulting - ${pageTitle}`} />
             <meta name="twitter:card" content="summary_large_image" />  
