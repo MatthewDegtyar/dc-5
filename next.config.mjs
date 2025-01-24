@@ -5,7 +5,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'cdn.sanity.io',
+        hostname: "*.cloudfront.net", // Allow all subdomains of Cloudfront
         port: '',
       },
     ],

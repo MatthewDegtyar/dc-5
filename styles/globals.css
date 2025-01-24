@@ -218,3 +218,117 @@ to   { opacity: 1; }
   transform: scaleX(1);
   transform-origin: bottom left;
 }
+
+
+/* Basic Styles for Blog Content */
+.blog-content {
+  font-family: "Arial", sans-serif;
+  line-height: 1.8;
+  color: #333;
+  background-color: #fff;
+  border-radius: 8px;
+}
+
+.blog-title {
+  color: #111;
+  font-family: "Georgia", serif;
+}
+
+/* Heading styles */
+.blog-content h1,
+.blog-content h2,
+.blog-content h3,
+.blog-content h4,
+.blog-content h5,
+.blog-content h6 {
+  color: #111;
+  font-family: "Georgia", serif;
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+.blog-content h1 {
+  font-size: 2.5rem;
+}
+
+.blog-content h2 {
+  font-size: 2rem;
+  
+}
+
+.blog-content h3 {
+  font-size: 1.75rem;
+  font-weight: 500;
+}
+
+.blog-content h4 {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.blog-content h5,
+.blog-content h6 {
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+/* Paragraph styles */
+.blog-content p {
+  font-size: 1rem;
+  color: #444;
+  margin-bottom: 5px;
+  text-align: justify;
+}
+
+/* Image styles */
+.blog-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin: 3px 0;
+}
+
+/* Link styles */
+.blog-content a {
+  color: #3498db;
+  text-decoration: none;
+}
+
+.blog-content a:hover {
+  text-decoration: underline;
+}
+
+/* Code block styles */
+.blog-content pre {
+  background-color: #2e2e2e;
+  color: #f8f8f8;
+  padding: 15px;
+  border-radius: 8px;
+  overflow-x: auto;
+}
+
+.blog-content code {
+  background-color: #f4f4f4;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+/* Blockquote styles */
+.blog-content blockquote {
+  background-color: #f9f9f9;
+  border-left: 4px solid #3498db;
+  padding: 10px 20px;
+  margin: 5px 0;
+  font-style: italic;
+  color: #666;
+}
+
+/* List styles */
+.blog-content ul,
+.blog-content ol {
+  margin: 10px 0;
+}
+
+.blog-content li {
+  margin-bottom: 8px;
+}

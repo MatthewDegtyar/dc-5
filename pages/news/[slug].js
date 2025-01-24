@@ -1,4 +1,3 @@
-import { getProject } from "../../sanity/sanity-utils";
 import { PortableText } from "@portabletext/react";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
@@ -8,33 +7,24 @@ import styles from "../../styles/slug.module.css";
 
 export default function Project({ project }) {
   const [formattedDate, setFormattedDate] = useState();
-  const [isLoaded, setIsLoaded] = useState(true);
-
-  const handleImageLoad = async () => {
-    setIsLoaded(true);
-  };
-
-  const handleImageError = () => {
-    setIsLoaded(true);
-  };
 
   useEffect(() => {
-    if (project?._createdAt) {
+    if (project?.created_at) {
       const options = {
         year: "numeric",
         month: "long",
         day: "numeric",
       };
 
-      const formatted = new Date(project?._createdAt).toLocaleDateString(
+      const formatted = new Date(project?.created_at).toLocaleDateString(
         "en-US",
         options
       );
       setFormattedDate(formatted);
     }
-  }, [project?._createdAt]);
+  }, [project?.created_at]);
 
-  if (!project || !project?.name) {
+  if (!project || !project?.title) {
     return (
       <RootLayout pageTitle="404">
         <div className="w-[100vw] bg-black h-[40vh] flex-col flex items-center justify-center text-white">
@@ -57,34 +47,32 @@ export default function Project({ project }) {
   return (
     <RootLayout
       canon_url={`news/${project?.slug}`}
-      meta_description={project?.tagline}
-      pageTitle={project?.name}
-      imageUrl={project?.image}
+      meta_description={project?.summary}
+      pageTitle={project?.title}
+      imageUrl={project?.image_url}
     >
       <div className="text-black flex flex-col items-center bg-white py-2">
         <div
-          className="absolute text-white w-[90vw] h-[50vh] "
+          className="absolute text-white w-[90vw] h-[50vh]"
           alt="descr holder"
         >
           <Image
             placeholder="blur"
             blurDataURL={`data:image/jpeg;base64,/img/bg1.webp`}
-            onLoad={handleImageLoad}
-            onError={handleImageError}
-            src={project?.image}
-            alt={project?.name}
+            src={project?.image_url}
+            alt={project?.title}
             width={1400}
             height={500}
             className="w-full bg-black rounded-[1px] z-10 h-[50vh] object-cover absolute"
           />
           <div
-            className=" w-[90vw] flex flex-col overflow-hidden items-center place-content-center left-0 backdrop-blur-[1px] z-40 bg-[#191919]/60 bottom-0 px-8 absolute gap-4 p-4"
+            className="w-[90vw] flex flex-col overflow-hidden items-center place-content-center left-0 backdrop-blur-[1px] z-40 bg-[#191919]/60 bottom-0 px-8 absolute gap-4 p-4"
             alt="header"
           >
             <div className="lg:w-[60vw] w-[90vw] px-2">
               <div className="flex flex-row gap-16">
                 <Image
-                  className="rounded-full w-[100px] hover:scale-[95%] transition-all duration-300 h-[100px] resize-none "
+                  className="rounded-full w-[100px] hover:scale-[95%] transition-all duration-300 h-[100px]"
                   src="/img/DClogo1024.webp"
                   width={75}
                   height={75}
@@ -93,21 +81,9 @@ export default function Project({ project }) {
                 />
 
                 <div className="flex flex-col items-start">
-                  {project?.author_link ? (
-                    <Link
-                      href={project?.author_link}
-                      alt={project?.author_link}
-                    >
-                      <p className="text-default-200 text-[20px] font-medium underline-animation-white2">
-                        {project?.author}
-                      </p>
-                    </Link>
-                  ) : (
-                    <p className="text-white">author: {project?.author}</p>
-                  )}
-                  <h1 className="text-h3-g">{project?.tagline}</h1>
+                  <p className="text-white">{project?.author}</p>
 
-                  <h2 className="text-title mt-2">{project?.name}</h2>
+                  <h1 className="text-h3-g">{project?.title}</h1>
                 </div>
               </div>
             </div>
@@ -133,14 +109,14 @@ export default function Project({ project }) {
         <div
           className={`${styles.news} text-black mt-5 text-start md:w-[60vw] w-[90vw]`}
         >
-          <PortableText value={project?.content} />
+          <div
+            className="mt-8 blog-content"
+            dangerouslySetInnerHTML={{ __html: project?.content }}
+          />{" "}
         </div>
 
         <div className="md:w-[60vw] w-[90vw] text-default-500 mt-8" alt="links">
           <div className="h-[1.5px] w-full bg-default-500 mb-2"></div>
-          <div className="w-full flex flex-row items-center justify-between mb-2 text-start">
-            <PortableText value={project?.closing} />
-          </div>
         </div>
 
         {project?.url && (
@@ -159,17 +135,40 @@ export default function Project({ project }) {
   );
 }
 
+// Fetch an individual project by ID
+async function getProject(id) {
+  console.log("[DEV] blog id", id);
+  try {
+    const response = await fetch(
+      `http://localhost:3000/api/get-blog?slug=${id}`, // Use the slug for the query
+      {
+        method: "GET",
+        headers: {
+          accept: "application/json",
+        },
+      }
+    );
+
+    if (!response.ok) {
+      console.error("Failed to fetch blogpost:", response.statusText);
+      return null;
+    }
+    const data = await response.json();
+    return data.data;
+  } catch (error) {
+    console.error("Error fetching project:", error);
+    return null;
+  }
+}
+
+// Fetch project data during server-side rendering
 export async function getServerSideProps({ params, res }) {
   try {
     const project = await getProject(params.slug);
-    console.log("project: ", project);
-    if (project == null) {
-      console.log(404);
-      // If the project is not found, return a 404 status code
-      res.statusCode = 404;
-      return {
-        props: {},
-      };
+
+    if (!project) {
+      res.statusCode = 404; // Return 404 if no project is found
+      return { props: {} };
     }
 
     return {
@@ -178,11 +177,8 @@ export async function getServerSideProps({ params, res }) {
       },
     };
   } catch (error) {
-    console.error("Error loading content: ", error);
-    // If there's an error, return a 404 status code
-    res.statusCode = 404;
-    return {
-      props: {},
-    };
+    console.error("Error loading content:", error);
+    res.statusCode = 500;
+    return { props: {} };
   }
 }
