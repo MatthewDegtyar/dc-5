@@ -18,3 +18,4 @@ Allow: /services/seo
 Allow: /services/static-sites
 Allow: /services/white-label
 Allow: /services/wordpress-cms
+Sitemap: https://www.yoursite.com/api/sitemap.xml
