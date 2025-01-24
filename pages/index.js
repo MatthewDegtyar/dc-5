@@ -21,7 +21,7 @@ const Home = () => {
             <div className='text-black lg:w-[50vw] lg:h-[50vh] bg- flex flex-col lg:items-center items-start lg:justify-center place-items-center'>
                 <div className='flex text-start items-start lg:items-center flex-col p-4 md:p-8 rounded-[1px] gap-2'>
                     <h1 className='text-title fade-in  text-white self-start text-nowrap'>We Create Value</h1>
-                    <h2 className='text-white fade-in  mt-4 lg:mt-8 lg:w-96 '>We’re a next generation digital solutions provider eliminating point points and empowring businesses.</h2>
+                    <h2 className='text-white fade-in  mt-4 lg:mt-8 lg:w-96 '>We’re a next generation digital solutions provider eliminating pain points and empowering businesses.</h2>
                 </div>
             </div>
         </div>
