@@ -46,10 +46,9 @@ export default function Project({ project }) {
 
   return (
     <RootLayout
-      canon_url={`news/${project?.slug}`}
-      meta_description={project?.summary}
-      pageTitle={project?.title}
-      imageUrl={project?.image_url}
+      canon_url={`news/`}
+      meta_description={"Deggie News"}
+      pageTitle={"Deggie News"}
     >
       <div className="text-black flex flex-col items-center bg-white py-2">
         <div
