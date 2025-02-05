@@ -7,7 +7,7 @@ export default async function handler(req, res) {
     try {
       // Proxy request to the external API
       const response = await fetch(
-        `http://54.224.177.93:8000/blogposts/by-project/6?offset=${offset}&limit=${limit}&sort_by=date_created&order=desc`,
+        `http://54.224.177.93:8000/v1/blogposts/by-project/6?offset=${offset}&limit=${limit}&sort_by=date_created&order=desc`,
         {
           method: "GET",
           headers: {

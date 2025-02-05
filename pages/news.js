@@ -133,7 +133,7 @@ export async function getServerSideProps({ query }) {
   try {
     // Fetch data from the API route for the first page (or whichever page is requested)
     const response = await fetch(
-      `http://localhost:3000/api/get-blogs?page=${page}&limit=${limit}`
+      `http://localhost:3001/api/get-blogs?page=${page}&limit=${limit}`
     ); // Adjust the limit or page as necessary
     const data = await response.json();
 

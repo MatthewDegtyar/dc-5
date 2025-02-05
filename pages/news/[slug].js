@@ -136,10 +136,9 @@ export default function Project({ project }) {
 
 // Fetch an individual project by ID
 async function getProject(id) {
-  console.log("[DEV] blog id", id);
   try {
     const response = await fetch(
-      `http://localhost:3000/api/get-blog?slug=${id}`, // Use the slug for the query
+      `http://localhost:3001/api/get-blog?slug=${id}`, // Use the slug for the query
       {
         method: "GET",
         headers: {
@@ -152,6 +151,7 @@ async function getProject(id) {
       console.error("Failed to fetch blogpost:", response.statusText);
       return null;
     }
+    
     const data = await response.json();
     return data.data;
   } catch (error) {
@@ -175,6 +175,7 @@ export async function getServerSideProps({ params, res }) {
         project,
       },
     };
+
   } catch (error) {
     console.error("Error loading content:", error);
     res.statusCode = 500;

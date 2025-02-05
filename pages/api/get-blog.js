@@ -11,7 +11,7 @@ export default async function handler(req, res) {
     try {
       // Fetch data from the external API using the slug
       const response = await fetch(
-        `http://54.224.177.93:8000/blogposts/by-slug/${slug}`, // Use the slug to get the specific post
+        `http://54.224.177.93:8000/v1/blogposts/by-slug/${slug}`, // Use the slug to get the specific post
         {
           method: "GET",
           headers: {
@@ -27,7 +27,8 @@ export default async function handler(req, res) {
       }
   
       const data = await response.json(); // Parse the JSON response
-  
+      console.log("[DEV] 123", data);
+      
       // Return the post data as the response
       return res.status(200).json(data);
     } catch (error) {
